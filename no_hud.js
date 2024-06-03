@@ -14,9 +14,9 @@
  */
 
 module.exports = class NoHUD extends Mod {
-    label = 'No HUD';
-    description = 'Press [H] to hide the HUD';
-    version = '1.0.0';
+    label = "No HUD";
+    description = "Press [H] to hide the HUD";
+    version = "1.0.0";
     settings = {
         hideResources: {
             default: true,
