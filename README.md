@@ -11,6 +11,7 @@ More information on modding this game [HERE](https://sixtyfour.game-vault.net/wi
   - Resources: resource bar and resource transfers,
   - Cursor: cursor and (_most of_) it's related visuals.
 - Dynamic background: Allows to change the background color (_default: #24242c_).
+- **Dynamic prices**: Allows to scale the base price and the price increase rate of the machines.
 
 ## Additional Information
 
