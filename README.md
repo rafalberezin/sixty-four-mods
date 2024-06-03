@@ -7,11 +7,11 @@ More information on modding this game [HERE](https://sixtyfour.game-vault.net/wi
 
 ## Mods
 
-- **No Hud**: Allows to hide the hud (_the 'chat' and shop_) and **optionally**:
-  - Resources: resource bar and resource transfers,
-  - Cursor: cursor and (_most of_) it's related visuals.
-- Dynamic background: Allows to change the background color (_default: #24242c_).
-- **Dynamic prices**: Allows to scale the base price and the price increase rate of the machines.
+- **No Hud**: Allows to hide the hud (_the 'chat' and shop_) by pressing <kbd>H</kbd>, and **optionally** hide:
+  - **Resources**: resource bar and resource transfers,
+  - **Cursor**: cursor and (_most of_) it's related visuals.
+- **Dynamic background**: Allows to change the background color. (_default: #24242c_)
+- **Dynamic prices**: Allows to scale the base price and the price increase rate of the machines. (_slows the price increase rate by default_)
 
 ## Additional Information
 
