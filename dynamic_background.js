@@ -26,14 +26,14 @@
 
 const _rgbHexPattern = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
-function _sanitizeRbgHex(str, fallback) {
-    if (!(""+str).startsWith("#")) str = "#" + str
-    if (!_rgbHexPattern.test(str)) return fallback;
-    if (str.length == 7) return str;
+function _sanitizeRbgHex(val, def) {
+    if (!(""+val).startsWith("#")) val = "#" + val
+    if (!_rgbHexPattern.test(val)) return def;
+    if (val.length == 7) return val;
     
-    const r = str.charAt(1);
-    const g = str.charAt(2);
-    const b = str.charAt(3);
+    const r = val.charAt(1);
+    const g = val.charAt(2);
+    const b = val.charAt(3);
     
     return `#${r + r + g + g + b + b}`;
 }
@@ -50,7 +50,7 @@ module.exports = class DynamicBackground extends Mod {
             default: "#24242c",
             label: "Background Color",
             description: "Rgb hex for background color.",
-            sanitize: val => _sanitizeRbgHex(val, this.settings.backgroundColor.default),
+            sanitize: _sanitizeRbgHex,
         },
         replaceSprites: {
             default: true,
@@ -192,10 +192,11 @@ module.exports = class DynamicBackground extends Mod {
 
     sanitizeOptions() {
         const options = this.getOptions();
+        const settings = this.getSettings();
 
         for (const key in options) {
             const option = this.settings[key];
-            if (option.sanitize) options[key] = option.sanitize(options[key]);
+            if (option.sanitize) options[key] = option.sanitize(options[key], settings[key].default);
         }
 
         return options;
