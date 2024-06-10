@@ -12,6 +12,7 @@ More information on modding this game [HERE](https://sixtyfour.game-vault.net/wi
   - **Cursor**: cursor and (_most of_) it's related visuals.
 - **Dynamic background**: Allows to change the background color. (_default: #24242c_)
 - **Dynamic prices**: Allows to scale the base price and the price increase rate of the machines. (_slows the price increase rate by default_)
+- **Industrial Furnace**: Adds a new machine, that produces Charonite more efficiently (upgrade to Beta-Pylene Oxidizer).
 
 ## Additional Information
 
@@ -25,4 +26,17 @@ game/
     ├── dynamic_background.js
     └── db_sprite_overrides/
         └── [.png files]
+```
+
+The **Industrial Furnace** mod, requires [custom sprites](https://github.com/RafalBerezin/Sixty_Four_Mods/blob/master/industrial_furnace_sprites.zip).
+Extract the contents of this zip archive into the mods folder.
+The folder structure should look like this:
+
+```
+game/
+└── mods/
+    └── img/
+        ├── industrial_furnace.png
+        └── shop/
+            └── industrial_furnace.jpg
 ```
