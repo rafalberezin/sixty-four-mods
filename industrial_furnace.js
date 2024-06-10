@@ -186,7 +186,7 @@ const codexEntry = {
 
 const wordsEntry = {
     name: "Industrial Furnace",
-    description: "Effitiently burns huge amounts Beta-Pylene with Celestial Foam to produce Charonite and trace amounts of other elements."
+    description: "Effitiently burns huge amounts of Beta-Pylene with Celestial Foam to produce Charonite and trace amounts of other elements."
 }
 
 module.exports = class IndustrialFurnaceMod extends Mod {
