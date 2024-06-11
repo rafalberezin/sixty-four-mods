@@ -20,7 +20,10 @@
  *             └── industrial_furnace.jpg
  * ----------------------------------------------
  *
- * Adds a Industrial Furnace, a more efficient version of Beta-Pylene oxidizer.
+ * Adds an Industrial Furnace, a more efficient version of Beta-Pylene oxidizer.
+ * 
+ * IMPORTANT
+ * All Industrial Furnaces will disappear without returning the resources if you start the game without this mod enabled.
  */
 
 const registryName = "industrial_furnace";
@@ -32,8 +35,8 @@ class IndustrialFurnace extends Entity {
     conversion = 0;
     baseConversionSpeed = 25e-6;
     state = 0;
-    fuel = [0,0,0,65536,0,1024,16384];
-    result = [524288,65536,32768];
+    fuel = [0, 0, 0, 65536, 0, 1024, 16384];
+    result = [524288, 65536, 32768];
     soulPower = 128;
 
     src = entitySpriteSrc;
@@ -42,18 +45,18 @@ class IndustrialFurnace extends Entity {
         super(master);
 
         this.sprite = new Sprite({
-			master: this.master,
-			src: this.src,
-			mask: [0,0,455,730],
-			frames: [[0,0,455,730],[455,0,455,730]],
-			origins: [227, 600],
-			scale: 1,
-			sequences: [0,1],
-			intervals: 100
-		});
+            master: this.master,
+            src: this.src,
+            mask: [0, 0, 455, 730],
+            frames: [[0, 0, 455, 730], [455, 0, 455, 730]],
+            origins: [227, 600],
+            scale: 1,
+            sequences: [0, 1],
+            intervals: 100
+        });
 
         this.initHint();
-		this.initSellHint();
+        this.initSellHint();
     }
 
     getConversionOutput() {
@@ -79,14 +82,14 @@ class IndustrialFurnace extends Entity {
 
     harvest() {
         this.shootExhaust();
-        
-        const screenxy = this.master.uvToXYUntranslated(this.position)
-		const pan = this.master.getPanValueFromX(screenxy[0])
-		const loudness = this.master.getLoudnessFromXY(screenxy);
+
+        const screenxy = this.master.uvToXYUntranslated(this.position);
+        const pan = this.master.getPanValueFromX(screenxy[0]);
+        const loudness = this.master.getLoudnessFromXY(screenxy);
 
         this.master.createResourceTransfer(this.getConversionOutput(), screenxy);
-		this.master.playSound(`break`, pan, loudness);
-		this.master.playSound(`tap1`, pan, loudness);
+        this.master.playSound("break", pan, loudness);
+        this.master.playSound("tap1", pan, loudness);
     }
 
     updateConversionProgress(dt) {
@@ -107,37 +110,34 @@ class IndustrialFurnace extends Entity {
 
     refill() {
         if (this.state !== 0) return;
-        const resources = this.master.requestResources(this.fuel, this.position, _=> this.activate());
+        const resources = this.master.requestResources(this.fuel, this.position, _ => this.activate());
         if (resources) this.state = 1;
     }
 
     activate() {
-		this.fill = 1;
-		this.state = 2;
-		this.sprite.switchSequence(1);
-		this.master.activeConverters.add(this);
-	}
+        this.fill = 1;
+        this.state = 2;
+        this.sprite.switchSequence(1);
+        this.master.activeConverters.add(this);
+    }
 
     onDelete() {
-		this.master.activeConverters.delete(this);
+        this.master.activeConverters.delete(this);
     }
 
     onmousedown() {
-		this.refill();
-	}
+        this.refill();
+    }
 
     init() {
-		this.preheaters = [];
-		this.isNextToSilo = false;
-
-        const x = this.position[0];
-        const y = this.position[1];
+        this.preheaters = [];
+        this.isNextToSilo = false;
 
         this.loopSoi(cell => {
             if (cell instanceof Preheater) return this.preheaters.push(cell);
             if (cell instanceof Silo) this.isNextToSilo = true;
         });
-	}
+    }
 
     loopSoi(callback) {
         const x = this.position[0];
@@ -148,13 +148,13 @@ class IndustrialFurnace extends Entity {
             const dy = this.soi[i][1];
             const pos = [x + dx, y + dy];
 
-			const cell = this.master.entityAtCoordinates(pos);
+            const cell = this.master.entityAtCoordinates(pos);
             if (cell) callback(cell);
-		}
+        }
     }
 
-    render(dt, vposition) {
-		const position = vposition ? vposition : this.position;
+    render(_, vposition) {
+        const position = vposition ? vposition : this.position;
         this.sprite.renderState(position, 0);
 
         if (!this.conversion) return;
@@ -175,10 +175,10 @@ const codexEntry = {
     priceExponent: 1.8,
     canPurchase: true,
     isUpgradeTo: "converter41",
-    affected: {silo: true, silo2: true, preheater: true},
+    affected: { silo: true, silo2: true, preheater: true },
     shouldUnlock: m => m.entitiesInGame.converter64 > 0,
     merge: true,
-    
+
     modded: {
         shopImageSrc: "mods/img/shop/industrial_furnace.jpg",
     }
@@ -193,10 +193,6 @@ module.exports = class IndustrialFurnaceMod extends Mod {
     label = 'Industrial Furnace';
     description = 'Adds a more efficient way to convert Beta-Pylene to Charonite';
     version = '1.0.0';
-
-    constructor(configuredOptions, mods) {
-        super(configuredOptions, mods);
-    }
 
     getMethodReplacements() {
         const self = this;
@@ -231,7 +227,7 @@ module.exports = class IndustrialFurnaceMod extends Mod {
 
         item.onmousedown = _ => {
             shop.master.pickupItem(params.id);
-			shop.master.processMousemove();
+            shop.master.processMousemove();
         }
 
         shop.items.push({
@@ -248,40 +244,40 @@ module.exports = class IndustrialFurnaceMod extends Mod {
 
     createShopItemContainer() {
         const item = document.createElement("div");
-		item.classList.add("shopItem", "hidden");
+        item.classList.add("shopItem", "hidden");
 
-		const imageVessel = document.createElement("div");
-		imageVessel.classList.add("imageVessel")
-		item.appendChild(imageVessel);
+        const imageVessel = document.createElement("div");
+        imageVessel.classList.add("imageVessel")
+        item.appendChild(imageVessel);
 
-		const image = document.createElement("img");
-		imageVessel.appendChild(image);
+        const image = document.createElement("img");
+        imageVessel.appendChild(image);
 
-		const header = document.createElement("div");
-		header.classList.add("itemHeader");
-		item.appendChild(header);
+        const header = document.createElement("div");
+        header.classList.add("itemHeader");
+        item.appendChild(header);
 
-		const description = document.createElement("div");
-		description.classList.add("itemDescription");
-		item.appendChild(description);
+        const description = document.createElement("div");
+        description.classList.add("itemDescription");
+        item.appendChild(description);
 
-		const price = document.createElement("div");
-		price.classList.add("itemPrice");
-		item.appendChild(price);
+        const price = document.createElement("div");
+        price.classList.add("itemPrice");
+        item.appendChild(price);
 
-		const counter = document.createElement("div");
-		counter.classList.add("itemCounter");
-		item.appendChild(counter);
+        const counter = document.createElement("div");
+        counter.classList.add("itemCounter");
+        item.appendChild(counter);
 
-		const existed = document.createElement("div");
-		existed.classList.add("existed");
-		item.appendChild(existed);
+        const existed = document.createElement("div");
+        existed.classList.add("existed");
+        item.appendChild(existed);
 
-        return {item, imageVessel, image, header, description, price, counter, existed};
+        return { item, imageVessel, image, header, description, price, counter, existed };
     }
 
     addShopItemUpgradeInfo(shop, imageVessel, entity) {
-        const baseEntityId =  entity.isUpgradeTo;
+        const baseEntityId = entity.isUpgradeTo;
         if (!baseEntityId) return;
 
         const baseEntity = shop.master.codex.entities[baseEntityId];
