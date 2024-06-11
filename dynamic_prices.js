@@ -21,7 +21,7 @@ function _sanitizeNonNegative(val, def) {
 module.exports = class DynamicPrices extends Mod {
     label = "Dynamic Prices";
     description = "Modify build prices.";
-    version = "1.0.0";
+    version = "1.1.0";
     settings = {
         priceBaseMultiplier: {
             default: 1,
@@ -29,7 +29,7 @@ module.exports = class DynamicPrices extends Mod {
             description: "Scale the base build price.",
             sanitize: _sanitizeNonNegative,
         },
-        priceScalingMultiplier: {
+        priceExponentMultiplier: {
             default: 0.5,
             label: "Scaling Multiplier",
             description: "Scale the build price increse rate.\nSet to 0 for constant prices.",
@@ -37,35 +37,48 @@ module.exports = class DynamicPrices extends Mod {
         },
     };
 
+    initializeOptions() {
+        super.initializeOptions();
+        this.sanitizeOptions();
+    };
+
     sanitizeOptions() {
         const options = this.getOptions();
         const settings = this.getSettings();
 
         for (const key in options) {
-            const option = this.settings[key];
-            if (option.sanitize) options[key] = option.sanitize(options[key], settings[key].default);
+            const setting = this.settings[key];
+            if (setting?.sanitize) options[key] = setting.sanitize(options[key], settings[key].default);
         }
-
-        return options;
     }
 
-    init() {
-        const options = this.sanitizeOptions();
-
+    updateCodex() {
+        const self = this;
         const original_abstract_getCodex = abstract_getCodex;
 
         abstract_getCodex = function () {
             const codex = original_abstract_getCodex();
 
             for (const key in codex.entities) {
-                const entity = codex.entities[key];
-                if (entity?.priceExponent !== 1) entity.priceExponent = (entity.priceExponent - 1) * options.priceScalingMultiplier + 1;
-                if (entity?.price) entity.price = entity.price.map(n => n * options.priceBaseMultiplier);
+                self.applyMultipliers(codex.entities[key]);
             }
 
             return codex;
         };
+    }
 
+    applyMultipliers(entity) {
+        if (entity.dynamicPricesApplied) return;
+        const options = this.getOptions();
+
+        if (entity.priceExponent !== 1 && options.priceExponentMultiplier !== 1) entity.priceExponent = (entity.priceExponent - 1) * options.priceExponentMultiplier + 1;
+        if (entity.price && options.priceBaseMultiplier !== 1) entity.price = entity.price.map(n => n * options.priceBaseMultiplier);
+
+        entity.dynamicPricesApplied = true;
+    }
+
+    init() {
+        this.updateCodex();
         console.log("Dynamic Prices was initialized.");
     };
 };
