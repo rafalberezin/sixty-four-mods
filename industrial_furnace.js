@@ -314,7 +314,20 @@ module.exports = class IndustrialFurnaceMod extends Mod {
         }
     }
 
+    handleDynamicPrices() {
+        const dp = this.mods.dynamic_prices;
+        if (!dp || !dp.enabled) return;
+
+        const options = dp.settings;
+
+        if (options.priceExponentMultiplier !== 1) codexEntry.priceExponent = (codexEntry.priceExponent - 1) * options.priceExponentMultiplier + 1;
+        if (options.priceBaseMultiplier !== 1) codexEntry.price = codexEntry.price.map(n => n * options.priceBaseMultiplier);
+
+        codexEntry.dynamicPricesApplied = true;
+    }
+
     init() {
         this.registerEntity();
+        this.handleDynamicPrices();
     };
 };
