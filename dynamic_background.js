@@ -27,21 +27,21 @@
 const _rgbHexPattern = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
 
 function _sanitizeRbgHex(val, def) {
-    if (!(""+val).startsWith("#")) val = "#" + val
+    if (!("" + val).startsWith("#")) val = "#" + val
     if (!_rgbHexPattern.test(val)) return def;
     if (val.length == 7) return val;
-    
+
     const r = val.charAt(1);
     const g = val.charAt(2);
     const b = val.charAt(3);
-    
+
     return `#${r + r + g + g + b + b}`;
 }
 
 module.exports = class DynamicBackground extends Mod {
     label = "Dynamic Background";
     description = "Modify background color.";
-    version = "1.0.0";
+    version = "1.0.1";
 
     replacementsDir = "mods/db_sprite_overrides/";
 
@@ -70,7 +70,7 @@ module.exports = class DynamicBackground extends Mod {
                 class: Game,
                 method: "renderloop",
                 replacement: function () {
-                    requestAnimationFrame(_ => { this.renderloop() });
+                    requestAnimationFrame(_ => this.renderloop());
 
                     this.unit = this.solidUnit * this.zoom;
 
@@ -88,7 +88,6 @@ module.exports = class DynamicBackground extends Mod {
                     this.ctx.save();
                     this.ctx.translate(this.w2, this.h2);
 
-                    //HIGHLIGHT
                     this.renderConductors(this.renderTime.dt);
                     this.ctx.translate(-this.w2, -this.h2);
                     this.renderChasmVFX();
@@ -114,16 +113,15 @@ module.exports = class DynamicBackground extends Mod {
 
                         this.renderHoveredCell();
 
-                        if (this.itemInHand) {
+                        if (this.itemInHand && !this.itemInHand.eraser) {
                             this.ctx.save();
                             this.ctx.globalAlpha = .5;
                             this.itemInHand.render(0, this.hoveredCell);
                             this.ctx.restore();
-                            this.renderAffected(this.itemInHand.name);    
+                            this.renderAffected(this.itemInHand.name);
                         }
                     }
 
-                    //Pinhole
                     if (this.pinhole) {
                         const radius = this.unit * .01 + this.unit * 2 * this.pinhole.f;
                         const time = performance.now() / 1000;
@@ -162,10 +160,9 @@ module.exports = class DynamicBackground extends Mod {
 
                     if (this.mouse.cursorVisible) this.renderCursor();
 
-                    //Hint position update
                     if (this.currentHint.element) {
-                        this.currentHint.element.style.left = this.mouse.offsetxy[0] + `px`;
-                        this.currentHint.element.style.top = this.mouse.offsetxy[1] + `px`;
+                        this.currentHint.element.style.left = this.mouse.offsetxy[0] + "px";
+                        this.currentHint.element.style.top = this.mouse.offsetxy[1] + "px";
                     }
 
                     if (!self.darkMode && this.photofobia && this.flashlight && !this.plane) {
@@ -221,18 +218,18 @@ module.exports = class DynamicBackground extends Mod {
         abstract_getCodex = function () {
             const codex = original_abstract_getCodex();
             const preloads = codex.preload;
-            
+
             const fs = require("fs");
             const dir = __dirname.endsWith("mods") ? __dirname.substring(0, __dirname.length - 4) : __dirname + "/";
 
-            fs.readdirSync(dir+self.replacementsDir).filter(e => e.endsWith(".png")).forEach(entry => {
+            fs.readdirSync(dir + self.replacementsDir).filter(e => e.endsWith(".png")).forEach(entry => {
                 const original = "img/" + entry;
                 const replacement = self.replacementsDir + entry;
 
                 const preloadIndex = preloads.indexOf(original);
                 if (preloadIndex == -1) preloads.push(replacement);
                 else preloads[preloadIndex] = replacement;
-                
+
                 self.spriteReplacements[original] = replacement;
             });
 
