@@ -171,7 +171,7 @@ class IndustrialFurnace extends Entity {
 
 const codexEntry = {
     class: IndustrialFurnace,
-    price: [4096, 0, 0, 524288, 1024, 16384, 1048576],
+    price: [4096, 0, 0, 524288, 1024, 4096, 1048576],
     priceExponent: 1.8,
     canPurchase: true,
     isUpgradeTo: "converter41",
