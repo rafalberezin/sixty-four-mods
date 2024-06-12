@@ -2,41 +2,57 @@
 
 A collection of my mods for game [Sixty Four](https://store.steampowered.com/app/2659900/Sixty_Four/).
 
-These require the [auto loader](https://gist.github.com/NamelessCoder/26be6b5db7480de09f9dfb9e80dee3fe#file-autoloader-js).
-More information on modding this game [HERE](https://sixtyfour.game-vault.net/wiki/Modding:Index).
+> [!IMPORTANT]
+> These require the [Mod Autoloader](https://gist.github.com/NamelessCoder/26be6b5db7480de09f9dfb9e80dee3fe#file-autoloader-js).
 
-## Mods
+You can find more information on modding this game [HERE](https://sixtyfour.game-vault.net/wiki/Modding:Index).
 
-- **No Hud**: Allows to hide the hud (_the 'chat' and shop_) by pressing <kbd>H</kbd>, and **optionally** hide:
-  - **Resources**: resource bar and resource transfers,
-  - **Cursor**: cursor and (_most of_) it's related visuals.
-- **Dynamic background**: Allows to change the background color. (_default: #24242c_)
-- **Dynamic prices**: Allows to scale the base price and the price increase rate of the machines. (_slows the price increase rate by default_)
-- **Industrial Furnace**: Adds a new machine, that produces Charonite more efficiently (upgrade to Beta-Pylene Oxidizer).
+## My Mods
 
-## Additional Information
+This is just a small overview. Read more in the individual mods' README.
 
-For the **Dynamic Background** mod, to change the background under the machines, you also need the [sprite overrides](https://github.com/RafalBerezin/Sixty_Four_Mods/blob/master/dynamic_background_sprite_overrides.zip).
-Extract the contents of this zip archive into the mods folder.
-The folder structure should look like this:
+- **[No Hud](https://github.com/RafalBerezin/Sixty_Four_Mods/tree/master/No_HUD)**: Allows to hide the hud by pressing <kbd>H</kbd>.
+- **[Dynamic background](https://github.com/RafalBerezin/Sixty_Four_Mods/tree/master/Dynamic_Background)**: Allows to change the background color.
+- **[Dynamic prices](https://github.com/RafalBerezin/Sixty_Four_Mods/tree/master/Dynamic_Prices)**: Allows to scale the base prices and their increase rate.
+- **[Industrial Furnace](https://github.com/RafalBerezin/Sixty_Four_Mods/tree/master/Industrial_Furnace)**: Adds an upgrade to **Beta-Pylene Oxidizer**, which is far more efficient.
 
-```
-game/
-└── mods/
-    ├── dynamic_background.js
-    └── db_sprite_overrides/
-        └── [.png files]
-```
+> [!NOTE]
+> Didn't find what you're looking for? Check out the [modding wiki](https://sixtyfour.game-vault.net/wiki/Modding:Index) to find other mods.
 
-The **Industrial Furnace** mod, requires [custom sprites](https://github.com/RafalBerezin/Sixty_Four_Mods/blob/master/industrial_furnace_sprites.zip).
-Extract the contents of this zip archive into the mods folder.
-The folder structure should look like this:
 
-```
-game/
-└── mods/
-    └── img/
-        ├── industrial_furnace.png
-        └── shop/
-            └── industrial_furnace.jpg
-```
+
+## How To Install
+
+1. Go to the game folder
+   - Go to **Steam Library**
+   - Right click the game
+   - Under **Manage** tab click on **Browse Local Files**
+   - Go to **win-unpacked/resources/app/game**
+2. Create **mods** folder
+3. Install the Mod Autoloader if you don't have it
+   - Download the [Mod Autoloader](https://gist.github.com/NamelessCoder/26be6b5db7480de09f9dfb9e80dee3fe#file-_readme-md)
+   - Place the **autoloader.js** file into the **mods** folder
+   - Open the **index.html** in the **game** folder
+   - Import the autoloader.js file.
+
+      <details>
+      <summary><b>Click here for detailed guide on this step</b></summary>
+   
+      At the top of the file you will see a lot of `<script ... ></script>` tags.
+   
+      Paste this `<script type="text/javascript" src="mods/autoloader.js"></script>` under the last script tag.
+   
+      It should look somewhat like this:
+   
+      ```html
+      <script type="text/javascript" src="scripts/codex.js?v=2"></script>
+      <script type="text/javascript" src="scripts/game.js?v=4"></script>
+      <!-- <script type="text/javascript" src="scripts/post.js?v=3"></script> -->
+   
+      <!-- The mod autloader -->
+      <script type="text/javascript" src="mods/autoloader.js"></script>
+      ```
+      </details>
+
+4. Download the mods that you want (the **.js** files) and place them into the **mods** folder created in **step 2**.
+5. Some mods may require additional stuff. Just make sure to read the given information on the individual mods page or stuff at the top of the mod file.

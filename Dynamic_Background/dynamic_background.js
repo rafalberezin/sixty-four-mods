@@ -9,19 +9,19 @@
  * See https://gist.github.com/NamelessCoder/26be6b5db7480de09f9dfb9e80dee3fe#file-_readme-md
  * 
  * REQUIRES THE SPRITE REPLACEMENTS TO GET THE CHANGED BACKGROUND UNDER MACHINES
- * https://github.com/RafalBerezin/Sixty_Four_Mods/blob/master/dynamic_background_sprite_overrides.zip
+ * https://github.com/RafalBerezin/Sixty_Four_Mods/blob/master/Dynamic_Background/dynamic_background_sprite_overrides.zip
  * Extract the contents of this zip archive into the mods folder.
- * The folder structure shuold look like this:
- * game/
- * └── mods/
- *     ├── dynamic_background.js
- *     └── db_sprite_overrides/
- *         └── [.png files]
+ * The folder structure should look like this:
+ * 
+ * mods/
+ * ├── dynamic_background.js
+ * └── db_sprite_overrides/
+ *     └── [.png files]
  *
  * ----------------------------------------------
  *
- * Changes the background color.
- * Additionaly allows to easily replace sprites.
+ * Allows to change the background color.
+ * Additionally, allows for easy replacement of the machine sprites.
  */
 
 const _rgbHexPattern = /^#(?:[0-9a-fA-F]{3}){1,2}$/;

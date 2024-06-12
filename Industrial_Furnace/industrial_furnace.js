@@ -9,18 +9,20 @@
  * See https://gist.github.com/NamelessCoder/26be6b5db7480de09f9dfb9e80dee3fe#file-_readme-md
  *
  * REQUIRES CUSTOM SPRITES
- * https://github.com/RafalBerezin/Sixty_Four_Mods/blob/master/industrial_furnace_sprites.zip
+ * https://github.com/RafalBerezin/Sixty_Four_Mods/blob/master/Industrial_Furnace/industrial_furnace_sprites.zip
  * Extract the contents of this zip archive into the mods folder.
  * The folder structure shuold look like this:
- * game/
- * └── mods/
- *     └── img/
- *         ├── industrial_furnace.png
- *         └── shop/
- *             └── industrial_furnace.jpg
+ * 
+ * mods/
+ * ├── industrial_furnace.js
+ * └── img/
+ *     ├── industrial_furnace.png
+ *     └── shop/
+ *         └── industrial_furnace.jpg
+ * 
  * ----------------------------------------------
  *
- * Adds an Industrial Furnace, a more efficient version of Beta-Pylene oxidizer.
+ * Adds an Industrial Furnace, a more efficient version of Beta-Pylene Oxidizer.
  * 
  * IMPORTANT
  * All Industrial Furnaces will disappear without returning the resources if you start the game without this mod enabled.
