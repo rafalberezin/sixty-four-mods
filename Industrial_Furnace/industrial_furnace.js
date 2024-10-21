@@ -23,6 +23,7 @@
  * ----------------------------------------------
  *
  * Adds an Industrial Furnace, a more efficient version of Beta-Pylene Oxidizer.
+ * It's unlocked after placing a Celestial Reactor.
  * 
  * IMPORTANT
  * All Industrial Furnaces will disappear without returning the resources if you start the game without this mod enabled.
@@ -193,7 +194,7 @@ const wordsEntry = {
 
 module.exports = class IndustrialFurnaceMod extends Mod {
     label = 'Industrial Furnace';
-    description = 'Adds a more efficient way to convert Beta-Pylene to Charonite';
+    description = 'Adds a more efficient way to convert Beta-Pylene to Charonite. Unlocked after placing a Celestial Reactor.';
     version = '1.0.0';
 
     getMethodReplacements() {

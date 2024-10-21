@@ -1,6 +1,7 @@
 # Industrial Furnace
 
 Adds a new machine called **Industrial Furnace**, which is an upgrade to **Beta-Pylene Oxidizer**, that makes it way more efficient.
+It's unlocked after placing a **Celectial Reactor**.
 
 > [!WARNING]
 > All Industrial Furnaces will disappear without returning the resources if you launch the game without this mod enabled.
