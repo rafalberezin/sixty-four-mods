@@ -1,6 +1,6 @@
 export {}
 
-export type GAME_API_MAPPING_VERSION = '1.2.2'
+export type GAME_API_MAPPING_VERSION = '1.2.1'
 
 export type ArrayPoint = [number, number]
 export type Point = { x: number; y: number }
