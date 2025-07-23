@@ -13,10 +13,9 @@ ESBUILD := pnpm exec esbuild \
 	--bundle \
 	--platform=node \
 	--format=cjs \
-	--target=es2020 \
+	--target=es2023 \
 	--external:electron \
 	--supported:dynamic-import=false \
-	--supported:import-meta=false \
 
 .PHONY: all modloader mods
 
