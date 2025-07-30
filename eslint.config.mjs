@@ -1,39 +1,54 @@
 import prettier from 'eslint-config-prettier'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
+import importPlugin from 'eslint-plugin-import'
 import { defineConfig } from 'eslint/config'
 
-function scoped(scope, configs) {
-	return configs.map(config => ({ ...config, files: scope }))
-}
+const FILES = ['src/**/*.ts']
 
-export default defineConfig(
-	scoped(
-		['src/**/*.ts'],
-		[
-			...tseslint.configs.recommended,
-			prettier,
+export default defineConfig([
+	{ files: FILES, extends: [tseslint.configs.recommended] },
+	prettier,
 
-			{
-				languageOptions: {
-					parserOptions: {
-						sourceType: 'module'
-					},
-					globals: {
-						...globals.browser,
-						...globals.node
-					}
-				},
-				rules: {
-					'@typescript-eslint/no-unused-vars': [
-						'error',
-						{
-							argsIgnorePattern: '^_',
-							varsIgnorePattern: '^_'
-						}
-					]
-				}
+	{
+		files: FILES,
+		languageOptions: {
+			parserOptions: {
+				sourceType: 'module'
+			},
+			globals: {
+				...globals.browser,
+				...globals.node
 			}
-		]
-	)
-)
+		},
+		plugins: {
+			import: importPlugin
+		},
+		rules: {
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{
+					argsIgnorePattern: '^_',
+					varsIgnorePattern: '^_'
+				}
+			],
+			'import/order': [
+				'error',
+				{
+					groups: [
+						'builtin',
+						'external',
+						['internal', 'index', 'sibling', 'parent'],
+						'object',
+						'type'
+					],
+					alphabetize: {
+						order: 'asc',
+						caseInsensitive: true
+					},
+					'newlines-between': 'always'
+				}
+			]
+		}
+	}
+])
