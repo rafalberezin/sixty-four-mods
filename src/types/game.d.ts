@@ -397,7 +397,10 @@ declare global {
 	class Game {
 		constructor(canvas: HTMLCanvasElement, preload: GamePreload | null)
 
-		init(_unused_canvas: HTMLCanvasElement | undefined, preload: GamePreload | null): Promise<void>
+		init(
+			_unused_canvas: HTMLCanvasElement | undefined,
+			preload: GamePreload | null
+		): Promise<void>
 		initMobile(
 			_unused_canvas: HTMLCanvasElement | undefined,
 			preload: GamePreload | null
@@ -455,8 +458,18 @@ declare global {
 		getLoudnessFromXY(xy: ArrayPoint): number
 		getPanValueFromX(x: number): number
 		pickupItem(name: CodexEntityNames): void
-		requestResources(r: ResourceArray, d: ArrayPoint, f?: OnFinish, skip?: boolean): boolean
-		askForResources(r: ResourceArray, d: ArrayPoint, f?: OnFinish, skip?: boolean): boolean
+		requestResources(
+			r: ResourceArray,
+			d: ArrayPoint,
+			f?: OnFinish,
+			skip?: boolean
+		): boolean
+		askForResources(
+			r: ResourceArray,
+			d: ArrayPoint,
+			f?: OnFinish,
+			skip?: boolean
+		): boolean
 		updateGlobalSounds(): void
 		updateGlobalVolume(v?: number): void
 		fadeSound(v: number): void
@@ -540,7 +553,12 @@ declare global {
 		drawResourceInScreenCoordinates(id: number, p: ArrayPoint): void
 		drawBeam(uv?: ArrayPoint, c?: Color): void
 		drawCube(position: ArrayPoint, size: number, triplet: ColorTriplet): void
-		drawPrism(position: ArrayPoint, size: number, height: number, triplet: ColorTriplet): void
+		drawPrism(
+			position: ArrayPoint,
+			size: number,
+			height: number,
+			triplet: ColorTriplet
+		): void
 		uvToXY(uv: ArrayPoint): ArrayPoint
 		uvToXYUntranslated(uv: ArrayPoint): ArrayPoint
 		xyToUV(uv: ArrayPoint): ArrayPoint
@@ -579,13 +597,27 @@ declare global {
 			v?: number[],
 			c?: Color
 		): void
-		createResourceExplosion(r: ResourceArray, p?: ArrayPoint, v?: number[]): void
+		createResourceExplosion(
+			r: ResourceArray,
+			p?: ArrayPoint,
+			v?: number[]
+		): void
 		createResourceSpark(c: ResourceArray, p?: ArrayPoint, v?: number[]): void
 		createScan(p: ArrayPoint): void
 		createExhaust(uv?: ArrayPoint, c?: Color, v?: number[]): void
 		createImpact(uv?: ArrayPoint, c?: Color, v?: number[]): void
-		createHollowEvent(color?: Color, time?: number, sound?: boolean, image?: boolean): void
-		createDarkHollowEvent(color?: Color, time?: number, sound?: boolean, image?: boolean): void
+		createHollowEvent(
+			color?: Color,
+			time?: number,
+			sound?: boolean,
+			image?: boolean
+		): void
+		createDarkHollowEvent(
+			color?: Color,
+			time?: number,
+			sound?: boolean,
+			image?: boolean
+		): void
 		updateHollowEvents(dt: number): void
 		renderHollowEvents(): void
 		renderDarkHollowEvents(): void
@@ -607,7 +639,12 @@ declare global {
 			scaleMult: number | undefined,
 			c: Color
 		): void
-		renderState(uv: ArrayPoint, f: number, back: boolean, scaleMult?: number): void
+		renderState(
+			uv: ArrayPoint,
+			f: number,
+			back: boolean,
+			scaleMult?: number
+		): void
 		renderStateWithOverlay(
 			uv: ArrayPoint,
 			f: number,
@@ -615,7 +652,12 @@ declare global {
 			scaleMult: number | undefined,
 			c: Color
 		): void
-		renderXY(xy: ArrayPoint, dt: number, back: boolean, forced_scale: number): void
+		renderXY(
+			xy: ArrayPoint,
+			dt: number,
+			back: boolean,
+			forced_scale: number
+		): void
 	}
 
 	class Entity {
@@ -769,7 +811,12 @@ declare global {
 
 	class Pump extends Entity {
 		boost(): void
-		getProbability(point?: number, spread?: number, value?: number, span?: number): number
+		getProbability(
+			point?: number,
+			spread?: number,
+			value?: number,
+			span?: number
+		): number
 		getResource(): number
 		checkForModifiers(): void
 		pumpTo(c: Cube, q: number): void
@@ -895,7 +942,11 @@ declare global {
 		): [HTMLDivElement | undefined, HTMLDivElement | undefined] | undefined
 		addLine(_unused_d?: string): void
 		addProgress(check?: () => string | number | boolean): void
-		addGradeAndProgress(grade: number, type: number, check?: () => string | number | boolean): void
+		addGradeAndProgress(
+			grade: number,
+			type: number,
+			check?: () => string | number | boolean
+		): void
 		addResourceList(r: ResourceArray): void
 		addResourcePercentageList(r: ResourceArray): void
 		addConvertersOutput(r: ResourceArray, f?: () => boolean): void
