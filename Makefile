@@ -2,8 +2,8 @@ MODLOADER_SRC := src/modloader/index.ts
 MODLOADER_SRC_ALL := src/modloader/*.ts
 MODLOADER_OUT := dist/modloader/modloader.js
 
-INSTALLER_SRC := src/modloader/installer/main.go
-INSTALLER_EMBED := src/modloader/installer/modloader.js
+INSTALLER_SRC := src/modloader-installer/main.go
+INSTALLER_EMBED := src/modloader-installer/modloader.js
 INSTALLER_OUT := dist/modloader/modloader-installer.exe
 
 MODS_SRC := src/mods
