@@ -1,5 +1,5 @@
 MODLOADER_SRC := src/modloader/index.ts
-MODLOADER_SRC_ALL := src/modloader/*.ts
+MODLOADER_SRC_ALL := $(wildcard src/modloader/*.ts) $(wildcard src/modloader/**/*.ts)
 MODLOADER_OUT := dist/modloader/modloader.js
 
 INSTALLER_SRC := src/modloader-installer/main.go
