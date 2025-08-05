@@ -1,5 +1,8 @@
 # Sixty Four Mods
 
+![GitHub License](https://img.shields.io/github/license/rafalberezin/sixty-four-mods?style=for-the-badge)
+![Game Version](https://img.shields.io/badge/Game_Version-1.2.1-blue?style=for-the-badge)
+
 Mod Loader for game
 [Sixty Four](https://store.steampowered.com/app/2659900/Sixty_Four/) (version
 1.2.1+) and some mods I've updated to this version.
