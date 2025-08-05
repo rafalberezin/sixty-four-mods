@@ -19,7 +19,7 @@ You can also look for more mods on the
 ## Mod Loader
 
 <details>
-<summary>Read this section if you used the old loader</summary>
+<summary>Read this expandable section if you used the old loader</summary>
 
 If you have played the game with the old mod loader you should remove the old
 modding files and verify the game files through steam to clean up any leftovers.
@@ -80,7 +80,7 @@ Before installation:
 
 ![folders before installation](../docs/assets/folders-before-installation.jpg)
 
-The modloader will unpack the modloader files, inject necessary code into game
+The installer will unpack the modloader files, inject necessary code into game
 files, and create the mods folder:
 
 ![folders after installation](../docs/assets/folders-after-installation.jpg)
@@ -93,7 +93,7 @@ A quick step by step:
 - Put the downloaded **modloader.js** into the **modloader** folder.
 - Navigate to **win-unpacked/resources/app/game** and openthe **index.html**
   file in a text editor.
-- Locate `</head>` near the middle of the file. Pay attention to the **/** as
+- Locate `</head>` near the middle of the file. Pay attention to the `/` as
   there will be a different simillar looking piece of code.
 - Copy this and paste it directly before `</head>`:
 
@@ -107,6 +107,7 @@ The full folder structure for reference:
 
 ## Getting help
 
-In case of any issues you can ask for help on the [game's discord server](https://discord.com/invite/7YXd3tScqS) or
+In case of any issues you can ask for help on the
+[game's discord server](https://discord.com/invite/7YXd3tScqS) or
 [Report a Bug](https://github.com/rafalberezin/sixty-four-mods/issues/new?template=bug-report.yml)
 if you encountered a bug.
