@@ -11,7 +11,11 @@ you download into the mods folder.
 
 You can get some mods from this repository:
 
-- **Comming soon**
+- [**Dynamic Prices**](./dynamic-prices.js): Scale build prices and their
+  increase rate.
+- [**Grid Lines**](./grid-lines.js): Display grid in the background.
+- [**Improved Silos**](./improved-silos.js): Configure refill cost and capacity
+  of silos.
 
 You can also look for more mods on the
 [game's wiki modding page](https://sixtyfour.game-vault.net/wiki/Modding:Index)
