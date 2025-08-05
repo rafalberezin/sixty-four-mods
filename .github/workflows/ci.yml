@@ -80,6 +80,7 @@ jobs:
         id: diff
         run: |
           git add dist/
+          git restore --staged dist/modloader/modloader-installer.exe
           if ! git diff --staged --exit-code; then
             echo "::error::Build artifacts are outdated. Please run `make all` and commit the results."
             exit 1
