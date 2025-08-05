@@ -8,7 +8,10 @@
 		"build:mods": "make mods",
 		"build:modloader": "make modloader",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ./src"
+		"format:check": "prettier --check .",
+		"lint": "eslint ./src",
+		"typecheck": "tsc --noEmit",
+		"validate": "pnpm run format:check && pnpm run lint && pnpm run typecheck"
 	},
 	"author": "Rafał Berezin",
 	"license": "MIT",
