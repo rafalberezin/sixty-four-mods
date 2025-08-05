@@ -1,0 +1,89 @@
+name: Bug Report
+description: Report a problem with the modloader or a mod in this repository
+title: '[BUG]: '
+labels:
+  - bug
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Please confirm the following before submitting
+      options:
+        - label: I have checked that this bug has not already been reported
+          required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Affects
+      description: What component is this issue about?
+      options:
+        - Mod Loder
+        - Mod Loder Installer
+        - Game Mappings
+        - A Specific Mod
+    validations:
+      required: true
+
+  - type: input
+    id: mod-name
+    attributes:
+      label: Mod name (if applicable)
+      placeholder: e.g. "Improved Silos"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of the bug.
+      placeholder: Describe the issue...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description:
+        A clear and concise description of what you expected to happen.
+      placeholder: Descibe what you expected...
+    validations:
+      required: true
+
+  - type: input
+    id: game-version
+    attributes:
+      label: Game version
+      placeholder: '1.2.1'
+    validations:
+      required: true
+
+  - type: input
+    id: loader-version
+    attributes:
+      label: Loader version
+      placeholder: '1.0.0'
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: |
+        Any other relevant context such as:
+
+        - Running mods and their versions
+        - Loader and mods settings
+        - Relevant logs
+        - Screenshots (if applicable)
+    validations:
+      required: false

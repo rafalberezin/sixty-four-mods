@@ -1,0 +1,55 @@
+name: Feature Request
+description: |
+  Suggest a mod or a new feature or improvement for the Mod Loader or a mod in this repository
+title: '[FEATURE]: '
+labels:
+  - enhancement
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a feature!
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Please confirm the following before submitting
+      options:
+        - label: This feature has not already been requested
+          required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Affects
+      description: What component is this request about?
+      options:
+        - Mod Loader
+        - Existing mod
+        - New mod
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: |
+        A clear and concise description of what problem this feature would solve.
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: |
+        A clear and concise description of the solution you want to be implemented.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: |
+        Any other relevant context.
+    validations:
+      required: false
