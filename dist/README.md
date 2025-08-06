@@ -16,6 +16,8 @@ You can get some mods from this repository:
 - [**Grid Lines**](./grid-lines.js): Display grid in the background.
 - [**Improved Silos**](./improved-silos.js): Configure refill cost and capacity
   of silos.
+- [**Compact Shop**](./compact-shop.js): Make the minimized shop even more
+  compact.
 
 You can also look for more mods on the
 [game's wiki modding page](https://sixtyfour.game-vault.net/wiki/Modding:Index)
