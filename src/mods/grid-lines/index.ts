@@ -71,7 +71,7 @@ export default {
 	name: 'Grid Lines',
 	description: 'Toggle visual grid lines by pressing "G"',
 
-	version: '1.0.0',
+	version: '1.0.1',
 	gameVersion: '1.2.1',
 	loaderVersion: '1.0.0',
 
@@ -81,26 +81,28 @@ export default {
 		return {
 			Game: {
 				wrap: {
-					renderEntities(ctx, dt) {
-						if (showGrid) {
-							const self = ctx.self
+					renderConductors(ctx, dt) {
+						if (!showGrid) return ctx.original(dt)
 
-							const canvasCtx = ctx.self.ctx
-							const uv = Array.from(self.hoveredCell)
-							uv[0] -= uv[0] % 2
-							uv[1] -= uv[1] % 2
+						const self = ctx.self
 
-							const range: XYRange = {
-								x: [uv[0] - gridArea + 0.5, uv[0] + gridArea + 0.5],
-								y: [uv[1] - gridArea + 0.5, uv[1] + gridArea + 0.5]
-							}
+						const canvasCtx = ctx.self.ctx
+						const uv = Array.from(self.hoveredCell)
+						uv[0] -= uv[0] % 2
+						uv[1] -= uv[1] % 2
 
-							drawGridLines(self, mctx.settings, canvasCtx, range)
-							if (mctx.settings.alternate.value)
-								fillAlternateSquares(self, mctx.settings, canvasCtx, range)
+						const range: XYRange = {
+							x: [uv[0] - gridArea + 0.5, uv[0] + gridArea + 0.5],
+							y: [uv[1] - gridArea + 0.5, uv[1] + gridArea + 0.5]
+						}
+
+						if (mctx.settings.alternate.value) {
+							fillAlternateSquares(self, mctx.settings, canvasCtx, range)
 						}
 
 						ctx.original(dt)
+
+						drawGridLines(self, mctx.settings, canvasCtx, range)
 					}
 				}
 			}
