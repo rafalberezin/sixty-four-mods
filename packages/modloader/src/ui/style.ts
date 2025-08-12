@@ -69,6 +69,8 @@ const sharedStyle = `
 #modloader-root, #modloader-root :is(*, *::before, *::after) {
 	margin: 0;
 	box-sizing: border-box;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 .ml-column {
