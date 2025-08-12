@@ -15,6 +15,8 @@ export const STYLE_VARS = {
 	},
 
 	color: {
+		accent: '--ml-accent',
+
 		text: '--ml-text-color',
 		fadedText: '--ml-text-faded-color',
 
@@ -24,7 +26,9 @@ export const STYLE_VARS = {
 		red: '--ml-red',
 
 		background: {
+			accent: '--ml-bg-accent',
 			base: '--ml-bg-base',
+
 			neutral: '--ml-bg-neutral',
 			green: '--ml-bg-green',
 			yellow: '--ml-bg-yellow',
@@ -56,10 +60,14 @@ const sharedStyle = `
 	${STYLE_VARS.color.red}: #99232f;
 
 	${STYLE_VARS.color.background.base}: #101010;
+
 	${STYLE_VARS.color.background.neutral}: color-mix(in oklab, var(${STYLE_VARS.color.neutral}) 20%, var(${STYLE_VARS.color.background.base}));
 	${STYLE_VARS.color.background.green}: color-mix(in oklab, var(${STYLE_VARS.color.green}) 20%, var(${STYLE_VARS.color.background.base}));
 	${STYLE_VARS.color.background.yellow}: color-mix(in oklab, var(${STYLE_VARS.color.yellow}) 10%, var(${STYLE_VARS.color.background.base}));
 	${STYLE_VARS.color.background.red}: color-mix(in oklab, var(${STYLE_VARS.color.red}) 10%, var(${STYLE_VARS.color.background.base}));
+
+	${STYLE_VARS.color.accent}: var(${STYLE_VARS.color.neutral});
+	${STYLE_VARS.color.background.accent}: var(${STYLE_VARS.color.background.neutral});
 }
 
 #modloader-root > * {
@@ -69,6 +77,34 @@ const sharedStyle = `
 #modloader-root, #modloader-root :is(*, *::before, *::after) {
 	margin: 0;
 	box-sizing: border-box;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.ml-green {
+	${STYLE_VARS.color.accent}: var(${STYLE_VARS.color.green});
+	${STYLE_VARS.color.background.accent}: var(${STYLE_VARS.color.background.green});
+}
+
+.ml-yellow {
+	${STYLE_VARS.color.accent}: var(${STYLE_VARS.color.yellow});
+	${STYLE_VARS.color.background.accent}: var(${STYLE_VARS.color.background.yellow});
+}
+
+.ml-red {
+	${STYLE_VARS.color.accent}: var(${STYLE_VARS.color.red});
+	${STYLE_VARS.color.background.accent}: var(${STYLE_VARS.color.background.red});
+}
+
+.ml-container {
+	padding: 1em;
+	background-color: var(${STYLE_VARS.color.background.accent});
+	border: 1px solid var(${STYLE_VARS.color.accent});
+	border-radius: 0.5rem;
+}
+
+.ml-text-color {
+	color: var(${STYLE_VARS.color.accent});
 }
 
 .ml-column {
@@ -93,7 +129,7 @@ const sharedStyle = `
 	display: block;
 	padding: 1rem 2rem;
 	width: fit-content;
-	background-color: var(${STYLE_VARS.color.neutral});
+	background-color: var(${STYLE_VARS.color.accent});
 	color: var(${STYLE_VARS.color.text});
 	letter-spacing: 1px;
 	text-transform: uppercase;
@@ -107,28 +143,6 @@ const sharedStyle = `
 	filter: brightness(1.2);
 }
 
-.ml-container {
-	padding: 1rem;
-	background-color: var(${STYLE_VARS.color.background.neutral});
-	border: 1px solid var(${STYLE_VARS.color.neutral});
-	border-radius: 0.5rem;
-}
-
-.ml-container.ml-green {
-	background-color: var(${STYLE_VARS.color.background.green});
-	border-color: var(${STYLE_VARS.color.green});
-}
-
-.ml-container.ml-yellow {
-	background-color: var(${STYLE_VARS.color.background.yellow});
-	border-color: var(${STYLE_VARS.color.yellow});
-}
-
-.ml-container.ml-red {
-	background-color: var(${STYLE_VARS.color.background.red});
-	border-color: var(${STYLE_VARS.color.red});
-}
-
 .ml-heading {
 	text-align: center;
 	font-weight: normal;
@@ -140,28 +154,28 @@ const sharedStyle = `
 }
 
 .ml-scroll::-webkit-scrollbar {
-    width: 1.2rem;
+	width: 1.2rem;
 }
 
 .ml-scroll::-webkit-scrollbar-track {
-    background-color: #ffffff10;
-    background-clip: content-box;
-    border-radius: 0.6rem;
-    border: 0.25rem solid transparent;
+	background-color: #ffffff10;
+	background-clip: content-box;
+	border-radius: 0.6rem;
+	border: 0.25rem solid transparent;
 }
 
 .ml-scroll::-webkit-scrollbar-thumb {
-    background-color: var(${STYLE_VARS.color.text});
-    background-clip: content-box;
-    border-radius: 0.6rem;
-    border: 0.25rem solid transparent;
-    cursor: pointer;
+	background-color: var(${STYLE_VARS.color.text});
+	background-clip: content-box;
+	border-radius: 0.6rem;
+	border: 0.25rem solid transparent;
+	cursor: pointer;
 }
 
 .ml-input {
 	padding: 0.5rem;
-	background-color: var(${STYLE_VARS.color.background.neutral});
-	border: 1px solid var(${STYLE_VARS.color.neutral});
+	background-color: var(${STYLE_VARS.color.background.accent});
+	border: 1px solid var(${STYLE_VARS.color.accent});
 	border-radius: 0.5rem;
 	color: var(${STYLE_VARS.color.text});
 }

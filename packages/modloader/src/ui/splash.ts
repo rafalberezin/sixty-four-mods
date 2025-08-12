@@ -1,8 +1,9 @@
 import { createElement } from './element'
+import { setLoaderStatus } from './loader'
 import { MODLOADER_UI_ROOT } from './main'
 import { openSettings } from './settings'
 import { registerStyle, Z_INDEX } from './style'
-import { addModPatches } from '../core/patch'
+import { addModPatches, BUILTIN_MOD_NAME } from '../core/patch'
 
 import type { PatchCollection } from '../core/patch'
 import type { PatchSpec } from '../types/modloader'
@@ -46,10 +47,10 @@ function closeSplashMenu() {
 	SPLASH_UI.root.classList.remove('ml-open')
 }
 
-const BUILTIN_MOD_NAME = '[modloader-builtin]'
+export function initSplashMenu(patches: PatchCollection) {
+	setLoaderStatus('Initializing splash menu')
 
-export function initSplashMenu(collection: PatchCollection) {
-	addModPatches(collection, BUILTIN_MOD_NAME, splashPatchSpec)
+	addModPatches(patches, BUILTIN_MOD_NAME, splashPatchSpec)
 
 	SPLASH_UI.settings.addEventListener('click', openSettings)
 	SPLASH_UI.reload.addEventListener('click', () => {
