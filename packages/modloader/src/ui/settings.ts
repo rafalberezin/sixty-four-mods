@@ -1,7 +1,7 @@
 import { createElement } from './element'
 import { setLoaderStatus } from './loader'
 import { MODLOADER_UI_ROOT } from './main'
-import { registerStyle, STYLE_VARS, Z_INDEX } from './style'
+import { registerStyle, Z_INDEX } from './style'
 import { saveSettings } from '../core/settings'
 
 import type { LoadedMod } from '../core/mod'
@@ -277,7 +277,8 @@ function createSection(mod: LoadedMod): HTMLDivElement {
 
 	const label = createElement('label', undefined, [
 		'ml-settings-mod-enabled-label',
-		'ml-container'
+		'ml-container',
+		'ml-text-color'
 	])
 	label.htmlFor = enabledId
 	updateEnabledLabel(mod.enabled, label)
@@ -361,7 +362,11 @@ function createSetting<T extends keyof SettingTypes>(
 				input.checked = value as boolean
 			}
 
-			label = createElement('label', undefined, ['ml-container'])
+			label = createElement('label', undefined, [
+				'ml-settings-mod-setting-input-label',
+				'ml-container',
+				'ml-text-color'
+			])
 			label.htmlFor = labelFor
 			onChange = () =>
 				updateEnabledLabel(input.checked, label as HTMLLabelElement)
@@ -443,16 +448,12 @@ registerStyle(`
 	display: none;
 }
 
-.ml-settings-mod-enabled-label {
+.ml-settings-mod-enabled-label,
+.ml-settings-mod-setting-input-label {
 	width: 12ch;
 	font-weight: bold;
 	letter-spacing: 1px;
-	color: var(${STYLE_VARS.color.red});
 	cursor: pointer;
-}
-
-.ml-settings-mod-enabled-label.ml-green {
-	color: var(${STYLE_VARS.color.green});
 }
 
 .ml-settings-mod-setting-name {
@@ -462,6 +463,11 @@ registerStyle(`
 
 .ml-settings-mod-setting-input {
 	max-width: 40ch;
+}
+
+.ml-settings-mod-setting-input-label {
+	font-size: 0.8rem;
+	font-weight: normal;
 }
 
 .ml-settings-mod-setting-input[type=checkbox] {

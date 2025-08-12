@@ -25,8 +25,8 @@ const LOADER_UI = {
 		'ml-scroll'
 	]),
 	actions: createElement('div', 'ml-loader-actions'),
-	ignore: createElement('button', 'ml-loader-ignore', ['ml-button'], 'Ignore'),
-	reload: createElement('button', 'ml-loader-reload', ['ml-button'], 'Reload')
+	ignore: createElement('button', undefined, ['ml-button', 'ml-red'], 'Ignore'),
+	reload: createElement('button', undefined, ['ml-button'], 'Reload')
 }
 
 export function initializeLoader() {
@@ -207,7 +207,6 @@ registerStyle(`
 .ml-loader-error {
 	gap: 0.5rem;
 	padding: 0.5rem;
-	border: 1px solid;
 }
 
 .ml-loader-error.ml-yellow {
@@ -259,8 +258,4 @@ registerStyle(`
 
 #ml-loader-actions .ml-button {
 	min-width: 35ch;
-}
-
-#ml-loader-ignore {
-	background-color: var(${STYLE_VARS.color.red});
 }`)
