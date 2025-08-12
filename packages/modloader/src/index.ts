@@ -98,12 +98,12 @@ async function main() {
 
 	const settings = synchronizeSettingsWithMods(loadedSettings, loadedMods)
 	saveSettings(settingsPath, settings)
-	initializeSettingsMenu(loadedMods, settingsPath, settings)
 
 	const enabledMods = loadedMods.filter(mod => mod.enabled)
 
 	const patches = collectPatches(enabledMods)
 	initSplashMenu(patches)
+	initializeSettingsMenu(loadedMods, settingsPath, settings, patches)
 
 	const patchableClassMap = getPatchableClasses()
 	applyPatches(patches, patchableClassMap)

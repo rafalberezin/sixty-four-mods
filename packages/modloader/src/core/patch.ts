@@ -62,6 +62,8 @@ const PATCH_SPEC_SCHEMA: Schema = {
 	}
 }
 
+export const BUILTIN_MOD_NAME = '[modloader-builtin]'
+
 const METHOD_PATCH_GROUPS = ['replace', 'wrap', 'observe'] as const
 
 export function collectPatches(mods: LoadedMod[]): PatchCollection {
