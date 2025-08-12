@@ -1,37 +1,45 @@
-MODLOADER_SRC := src/modloader/index.ts
-MODLOADER_SRC_ALL := $(wildcard src/modloader/*.ts) $(wildcard src/modloader/**/*.ts)
-MODLOADER_OUT := dist/modloader/modloader.js
+export GET_PACKAGE_VERSION := node -e "console.log(require(\"./package.json\").version)"
 
-INSTALLER_SRC := src/modloader-installer/main.go
-INSTALLER_EMBED := src/modloader-installer/modloader.js
-INSTALLER_OUT := dist/modloader/modloader-installer.exe
-
-MODS_SRC := src/mods
-MOD_NAMES := $(notdir $(shell find $(MODS_SRC) -mindepth 2 -maxdepth 2 -name "index.ts" -exec dirname {} \;))
-
-ESBUILD := pnpm exec esbuild \
+export ESBUILD_BASE := pnpm exec esbuild \
 	--bundle \
 	--platform=node \
 	--format=cjs \
 	--target=es2023 \
-	--external:electron \
 	--supported:dynamic-import=false \
+	--define:__VERSION__='"$$(shell $(GET_PACKAGE_VERSION))"'
 
-.PHONY: all modloader mods
+.PHONY: all modloader modloader/clean mappings mappings/clean mods mods/clean clean .FORCE
+.FORCE:
 
-all: modloader mods
+all: modloader mappings mods
 
-modloader: $(INSTALLER_OUT)
+modloader:
+	$(MAKE) -C packages/modloader build
 
-$(MODLOADER_OUT): $(MODLOADER_SRC_ALL)
-	$(ESBUILD) "$(MODLOADER_SRC)" --outfile="$(MODLOADER_OUT)" --format=iife
+modloader/clean:
+	$(MAKE) -C packages/modloader clean
 
-$(INSTALLER_OUT): $(INSTALLER_SRC) $(MODLOADER_OUT)
-	cp "$(MODLOADER_OUT)" "$(INSTALLER_EMBED)"
-	go build -o "$(INSTALLER_OUT)" "$(INSTALLER_SRC)"
-	rm -f "$(INSTALLER_EMBED)"
+# mappings targets are for artifact upload only
+mappings:
+	$(MAKE) -C packages/mappings build
 
-mods: $(MOD_NAMES:%=dist/%.js)
+mappings/clean:
+	$(MAKE) -C packages/mappings clean
 
-dist/%.js: src/mods/%/index.ts
-	$(ESBUILD) "$<" --outfile="$@"
+mods:
+	for dir in packages/mods/*; do \
+		$(MAKE) -C $$dir build; \
+	done
+
+mods/clean:
+	for dir in packages/mods/*; do \
+		$(MAKE) -C $$dir clean; \
+	done
+
+mod/%: .FORCE
+	$(MAKE) -C packages/mods/$* build
+
+mod/%/clean: .FORCE
+	$(MAKE) -C packages/mods/$* clean
+
+clean: modloader/clean mappings/clean mods/clean
