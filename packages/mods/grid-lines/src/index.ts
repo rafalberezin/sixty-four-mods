@@ -1,5 +1,7 @@
-import { ArrayPoint } from '../../types/game'
-import { Mod, ModSettings, ModSettingsDefinition } from '../../types/modloader'
+import { ArrayPoint } from 'mappings/types'
+import { Mod, ModSettings, ModSettingsDefinition } from 'modloader/types'
+
+declare const __VERSION__: string
 
 declare global {
 	interface Game {
@@ -71,7 +73,7 @@ export default {
 	name: 'Grid Lines',
 	description: 'Toggle visual grid lines by pressing "G"',
 
-	version: '1.0.1',
+	version: __VERSION__,
 	gameVersion: '1.2.1',
 	loaderVersion: '1.0.0',
 
@@ -110,7 +112,7 @@ export default {
 	},
 
 	onLoad() {
-		window.addEventListener('keypress', event => {
+		window.addEventListener('keydown', event => {
 			if (event.key === 'g' && !MOD_TOOLBOX.focusesTextEditableElement())
 				showGrid = !showGrid
 		})

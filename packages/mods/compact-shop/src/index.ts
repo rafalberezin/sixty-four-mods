@@ -1,10 +1,25 @@
-import { Mod, ModSettingsDefinition } from '../../types/modloader'
+import { Mod, ModSettingsDefinition } from 'modloader/types'
+
+declare const __VERSION__: string
+
+declare global {
+	interface Shop {
+		shopToggle: HTMLDivElement
+	}
+}
 
 const settings = {
 	angledPrices: {
 		type: 'boolean',
 		name: 'Angled Prices',
 		description: 'Display the prices at an angle for easier reading',
+		default: true,
+		sanitize: a => a
+	},
+	autoMinimize: {
+		type: 'boolean',
+		name: 'Auto Compact',
+		description: 'Minimize the shop automatically when the game starts',
 		default: true,
 		sanitize: a => a
 	}
@@ -15,11 +30,25 @@ export default {
 	name: 'Compact Shop',
 	description: 'Make the minimized shop even more compact',
 
-	version: '1.0.0',
+	version: __VERSION__,
 	gameVersion: '1.2.1',
 	loaderVersion: '1.0.0',
 
 	settings,
+
+	getPatches(mctx) {
+		if (!mctx.settings.autoMinimize.value) return {}
+
+		return {
+			Shop: {
+				observe: {
+					init(ctx) {
+						ctx.self.shopToggle.click()
+					}
+				}
+			}
+		}
+	},
 
 	getStyles(mctx) {
 		const angled = mctx.settings.angledPrices.value

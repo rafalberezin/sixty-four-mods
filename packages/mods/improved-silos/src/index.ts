@@ -1,5 +1,7 @@
-import type { ResourceArray } from '../../types/game'
-import type { Mod, ModSettingsDefinition } from '../../types/modloader'
+import type { ResourceArray } from 'mappings/types'
+import type { Mod, ModSettingsDefinition } from 'modloader/types'
+
+declare const __VERSION__: string
 
 const MOD_ID = 'improved-silos'
 
@@ -53,7 +55,7 @@ const mod = {
 	name: 'Improved Silos',
 	description: 'Modify refil cost and fuel drain rate of the silos.',
 
-	version: '1.0.0',
+	version: __VERSION__,
 	gameVersion: '1.2.1',
 	loaderVersion: '1.0.0',
 

@@ -1,0 +1,7 @@
+{
+	"name": "compact-shop",
+	"version": "1.0.0",
+	"devDependencies": {
+		"modloader": "workspace:*"
+	}
+}

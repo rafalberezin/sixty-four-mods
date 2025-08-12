@@ -1,0 +1,8 @@
+{
+	"name": "improved-silos",
+	"version": "1.0.0",
+	"devDependencies": {
+		"mappings": "workspace:*",
+		"modloader": "workspace:*"
+	}
+}

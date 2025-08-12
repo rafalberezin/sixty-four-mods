@@ -1,5 +1,7 @@
-import type { CodexEntity } from '../../types/game'
-import type { Mod, ModSettingsDefinition } from '../../types/modloader'
+import type { CodexEntity } from 'mappings/types'
+import type { Mod, ModSettingsDefinition } from 'modloader/types'
+
+declare const __VERSION__: string
 
 const settings = {
 	priceBaseMultiplier: {
@@ -22,7 +24,7 @@ const settings = {
 const mod = {
 	id: 'dynamic-prices',
 	name: 'Dynamic Prices',
-	version: '2.0.0',
+	version: __VERSION__,
 	description: 'Modify build prices',
 
 	gameVersion: '1.2.1',
