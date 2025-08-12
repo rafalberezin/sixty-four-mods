@@ -140,22 +140,22 @@ const sharedStyle = `
 }
 
 .ml-scroll::-webkit-scrollbar {
-    width: 1.2rem;
+	width: 1.2rem;
 }
 
 .ml-scroll::-webkit-scrollbar-track {
-    background-color: #ffffff10;
-    background-clip: content-box;
-    border-radius: 0.6rem;
-    border: 0.25rem solid transparent;
+	background-color: #ffffff10;
+	background-clip: content-box;
+	border-radius: 0.6rem;
+	border: 0.25rem solid transparent;
 }
 
 .ml-scroll::-webkit-scrollbar-thumb {
-    background-color: var(${STYLE_VARS.color.text});
-    background-clip: content-box;
-    border-radius: 0.6rem;
-    border: 0.25rem solid transparent;
-    cursor: pointer;
+	background-color: var(${STYLE_VARS.color.text});
+	background-clip: content-box;
+	border-radius: 0.6rem;
+	border: 0.25rem solid transparent;
+	cursor: pointer;
 }
 
 .ml-input {
