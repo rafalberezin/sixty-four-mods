@@ -1,0 +1,11 @@
+{
+	"separate-pull-requests": true,
+	"packages": {
+		"packages/modloader": {},
+		"packages/mappings": {},
+		"packages/mods/compact-shop": {},
+		"packages/mods/dynamic-prices": {},
+		"packages/mods/grid-lines": {},
+		"packages/mods/improved-silos": {}
+	}
+}
