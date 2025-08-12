@@ -1,6 +1,7 @@
 export {}
 
-export type GAME_API_MAPPING_VERSION = '1.2.1'
+export type MAPPING_VERSION = '__VERSION__' // populated automatically from `package.json`
+export type TARGET_GAME_VERSION = '1.2.1'
 
 export type ArrayPoint = [number, number]
 export type Point = { x: number; y: number }
@@ -514,7 +515,6 @@ declare global {
 		updateAnalytics(dt: number): void
 		updateLoop(): void
 		updateCycle(span?: number, silent?: boolean): boolean
-		updateCycle(): void
 		updateMusic(dt: number): void
 		updateAutoClicker(dt: number): void
 		updateGamepad(dt: number): void
@@ -982,4 +982,98 @@ declare global {
 		constructor(master: Game, next?: number)
 		update(dt: number): void
 	}
+}
+
+export interface PatchableClassMap {
+	Bezier: typeof Bezier
+
+	VFX: typeof VFX
+	Exhaust: typeof Exhaust
+	ResourceExplosion: typeof ResourceExplosion
+	ResourceSpark: typeof ResourceSpark
+	ScannerMap: typeof ScannerMap
+	Impact: typeof Impact
+	ResourceTransfer: typeof ResourceTransfer
+	ChasmTransfer: typeof ChasmTransfer
+	Lightning: typeof Lightning
+	DarkWave: typeof DarkWave
+
+	Game: typeof Game
+	Sprite: typeof Sprite
+
+	Entity: typeof Entity
+	Strange: typeof Strange
+	Strange1: typeof Strange1
+	Strange2: typeof Strange2
+	Strange3: typeof Strange3
+	Vault: typeof Vault
+	Doublechannel: typeof Doublechannel
+	Consumer: typeof Consumer
+	Preheater: typeof Preheater
+	Doublechannel2: typeof Doublechannel2
+	Auxpump: typeof Auxpump
+	Auxpump2: typeof Auxpump2
+	Valve: typeof Valve
+	Injector: typeof Injector
+	Entropic: typeof Entropic
+	Entropic2: typeof Entropic2
+	Entropic2a: typeof Entropic2a
+	Entropic3: typeof Entropic3
+	Destabilizer: typeof Destabilizer
+	Destabilizer2: typeof Destabilizer2
+	Destabilizer2a: typeof Destabilizer2a
+	Converter32: typeof Converter32
+	Converter13: typeof Converter13
+	Converter41: typeof Converter41
+	Converter76: typeof Converter76
+	Converter64: typeof Converter64
+	Reflector: typeof Reflector
+	Generaldecay: typeof Generaldecay
+	Cube: typeof Cube
+	Pump: typeof Pump
+	Pump2: typeof Pump2
+	Mega1: typeof Mega1
+	Mega1a: typeof Mega1a
+	Mega1b: typeof Mega1b
+	Mega2: typeof Mega2
+	Mega3: typeof Mega3
+	Eye: typeof Eye
+	Clicker1: typeof Clicker1
+	Clicker2: typeof Clicker2
+	Clicker3: typeof Clicker3
+	Cookie: typeof Cookie
+	Pinhole: typeof Pinhole
+	Gradient: typeof Gradient
+	Chasm: typeof Chasm
+	Conductor: typeof Conductor
+	Voidsculpture: typeof Voidsculpture
+	Hollow: typeof Hollow
+	Flower: typeof Flower
+	Fruit: typeof Fruit
+	Vessel: typeof Vessel
+	Vessel2: typeof Vessel2
+	Silo: typeof Silo
+	Silo2: typeof Silo2
+	Waypoint: typeof Waypoint
+	Waypoint2: typeof Waypoint2
+	Annihilator: typeof Annihilator
+	Surge: typeof Surge
+	Stabilizer: typeof Stabilizer
+	Stabilizer2: typeof Stabilizer2
+	Stabilizer3: typeof Stabilizer3
+	Scan: typeof Scan
+	Puncture: typeof Puncture
+
+	Achiever: typeof Achiever
+	Messenger: typeof Messenger
+	Splash: typeof Splash
+	Cloud: typeof Cloud
+	Shop: typeof Shop
+	Explainer: typeof Explainer
+}
+
+// globally expose exported types needed by `modloader.d.ts` of the modloader package
+declare global {
+	type __Codex__ = Codex
+	type __PatchableClassMap__ = PatchableClassMap
 }
