@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint'
 import importPlugin from 'eslint-plugin-import'
 import { defineConfig } from 'eslint/config'
 
-const FILES = ['src/**/*.ts']
+const FILES = ['packages/**/*.ts']
 
 export default defineConfig([
 	{ files: FILES, extends: [tseslint.configs.recommended] },
@@ -38,7 +38,7 @@ export default defineConfig([
 					groups: [
 						'builtin',
 						'external',
-						['internal', 'index', 'sibling', 'parent'],
+						['internal', 'sibling', 'parent', 'index'],
 						'object',
 						'type'
 					],

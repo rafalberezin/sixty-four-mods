@@ -2,9 +2,10 @@
 	"compilerOptions": {
 		"target": "es2023",
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"strict": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true
-	}
+	},
+	"exclude": ["**/dist/**"]
 }
