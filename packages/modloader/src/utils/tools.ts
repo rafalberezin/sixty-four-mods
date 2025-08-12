@@ -4,7 +4,7 @@ import { ipcRenderer } from 'electron'
 
 import { setLoaderStatus } from '../ui/loader'
 
-import type { ModToolbox } from '../../types/modloader'
+import type { ModToolbox } from '../types/modloader'
 
 export function deepFreeze<T>(target: T): T {
 	if (typeof target === 'object' && target !== null) {

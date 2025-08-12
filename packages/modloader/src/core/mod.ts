@@ -20,7 +20,7 @@ import type {
 	ModContext,
 	ModSettingsDefinition,
 	PatchSpec
-} from '../../types/modloader'
+} from '../types/modloader'
 import type { Schema } from '../utils/validate'
 import type { Version } from '../utils/version'
 

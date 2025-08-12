@@ -5,7 +5,7 @@ import { log } from '../utils/tools'
 import { validate } from '../utils/validate'
 
 import type { LoadedMod } from './mod'
-import type { ModSettings } from '../../types/modloader'
+import type { ModSettings } from '../types/modloader'
 import type { ErrorMessage, Schema } from '../utils/validate'
 
 export interface LoaderSettings {

@@ -4,13 +4,13 @@ import { MODLOADER_UI_ROOT } from './main'
 import { registerStyle, STYLE_VARS, Z_INDEX } from './style'
 import { saveSettings } from '../core/settings'
 
+import type { LoadedMod } from '../core/mod'
+import type { LoaderSettings } from '../core/settings'
 import type {
 	ModSettingsDefinitionEntry,
 	ModSettings,
 	SettingTypes
-} from '../../types/modloader'
-import type { LoadedMod } from '../core/mod'
-import type { LoaderSettings } from '../core/settings'
+} from '../types/modloader'
 
 const SETTINGS_UI = {
 	root: createElement('div', 'ml-settings', ['ml-overlay']),
@@ -111,7 +111,8 @@ function changeSetting(
 	mod: LoadedMod,
 	settingId: string,
 	value: SettingTypes[keyof SettingTypes],
-	reset: () => void
+	reset: () => void,
+	onChange?: () => void
 ) {
 	if (!mod.settings || !(settingId in mod.settings)) return
 	const modId = mod.definition.id
@@ -119,6 +120,8 @@ function changeSetting(
 
 	const modSettingChanges = (settingChanges[modId] ??= {})
 	const isChanged = settingId in modSettingChanges
+
+	onChange?.()
 
 	if (current.value === value) {
 		if (isChanged) {
@@ -340,18 +343,31 @@ function createSetting<T extends keyof SettingTypes>(
 		'ml-settings-mod-setting-input',
 		'ml-input'
 	])
-
+	let label: HTMLLabelElement | undefined = undefined
 	let valueGetter: () => SettingTypes[keyof SettingTypes]
 	let valueReset: () => void
+	let onChange = undefined
 
 	switch (definition.type) {
 		case 'boolean':
+			const labelFor = `ml-settings-mod-setting-${settingId}`
+
 			input.type = 'checkbox'
 			input.checked = value as boolean
+			input.id = labelFor
+
 			valueGetter = () => input.checked
 			valueReset = () => {
 				input.checked = value as boolean
 			}
+
+			label = createElement('label', undefined, ['ml-container'])
+			label.htmlFor = labelFor
+			onChange = () =>
+				updateEnabledLabel(input.checked, label as HTMLLabelElement)
+
+			updateEnabledLabel(input.checked, label as HTMLLabelElement)
+
 			break
 		case 'number':
 			input.type = 'number'
@@ -372,9 +388,10 @@ function createSetting<T extends keyof SettingTypes>(
 	}
 
 	input.addEventListener('change', () =>
-		changeSetting(mod, settingId, valueGetter(), valueReset)
+		changeSetting(mod, settingId, valueGetter(), valueReset, onChange)
 	)
 
+	if (label !== undefined) root.appendChild(label)
 	root.appendChild(input)
 
 	return root
@@ -445,6 +462,10 @@ registerStyle(`
 
 .ml-settings-mod-setting-input {
 	max-width: 40ch;
+}
+
+.ml-settings-mod-setting-input[type=checkbox] {
+	display:none
 }
 
 #ml-settings-change-counter {

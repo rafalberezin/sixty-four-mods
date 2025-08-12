@@ -4,8 +4,8 @@ import { openSettings } from './settings'
 import { registerStyle, Z_INDEX } from './style'
 import { addModPatches } from '../core/patch'
 
-import type { PatchSpec } from '../../types/modloader'
 import type { PatchCollection } from '../core/patch'
+import type { PatchSpec } from '../types/modloader'
 
 const SPLASH_UI = {
 	root: createElement('div', 'ml-splash-menu', ['ml-column', 'ml-container']),

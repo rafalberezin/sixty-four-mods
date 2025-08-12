@@ -6,10 +6,9 @@ import type { LoadedMod } from './mod'
 import type {
 	Method,
 	MethodPatchTypes,
-	PatchableClassMap,
 	PatchContext,
 	PatchSpec
-} from '../../types/modloader'
+} from '../types/modloader'
 import type { Schema } from '../utils/validate'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,7 +16,7 @@ export type Constructor = abstract new (...args: any) => any
 
 // less strict, better for dynamic access, but allows arbitrary keys, so only used internally
 interface InternalPatchableClassMap
-	extends PatchableClassMap,
+	extends __PatchableClassMap__,
 		Record<string, Constructor> {}
 
 export type PatchCollection = {
@@ -103,7 +102,9 @@ export function addModPatches(
 	modName: string,
 	patches: PatchSpec
 ) {
-	for (const className of Object.keys(patches) as (keyof PatchableClassMap)[]) {
+	for (const className of Object.keys(
+		patches
+	) as (keyof __PatchableClassMap__)[]) {
 		const classPatch = patches[className]
 		if (classPatch === undefined) continue
 
@@ -122,7 +123,7 @@ export function addModPatches(
 					wrap: [],
 					observe: []
 				}) as MethodPatchCollection<
-					InstanceType<InternalPatchableClassMap[keyof PatchableClassMap]>,
+					InstanceType<InternalPatchableClassMap[keyof __PatchableClassMap__]>,
 					Method
 				>
 

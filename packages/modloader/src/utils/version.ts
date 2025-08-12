@@ -4,12 +4,12 @@ export type Version = {
 	str: string
 }
 
-const LOADER_VERSION: VersionArray = [1, 0, 0]
-const TARGET_GAME_VERSION: VersionArray = [1, 2, 1]
+declare const __VERSION__: string
+const ERROR: Version = { str: '0.0.0', arr: [0, 0, 0] }
 
 export const VERSIONS = {
-	loader: versionFromArray(LOADER_VERSION),
-	gameTarget: versionFromArray(TARGET_GAME_VERSION)
+	loader: versionFromString(__VERSION__) ?? ERROR,
+	gameTarget: versionFromArray([1, 2, 1])
 }
 
 function versionFromArray(version: VersionArray): Version {
