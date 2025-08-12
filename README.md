@@ -9,21 +9,16 @@ Mod Loader for game
 
 ## For players
 
-Everything you need to know is inside the
-[dist/](https://github.com/rafalberezin/sixty-four-mods/tree/master/dist)
-directory.
+Comming soon, thank you for your patience!
 
 ## For modders
 
 Modding guide comming soon.
 
-<!--
-Read the modding guide [on my website](https://rafalberezin.dev/projects/sixty-four-mod-loader).
--->
-
 ## Useful resources
 
-- [Wiki](https://sixtyfour.game-vault.net/wiki/Main_Page)
+- [Wiki](https://sixtyfour.game-vault.net/wiki/Main_Page) (modding page is
+  currently outdated)
 - [Discord](https://discord.com/invite/7YXd3tScqS)
 - [Steam](https://store.steampowered.com/app/2659900/Sixty_Four/)
 
