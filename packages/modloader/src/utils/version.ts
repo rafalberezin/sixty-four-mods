@@ -4,6 +4,8 @@ export type Version = {
 	str: string
 }
 
+const SIMPLE_VERSION_REGEX = /^v?(\d+)\.(\d+)\.(\d+).*$/
+
 declare const __VERSION__: string
 const ERROR: Version = { str: '0.0.0', arr: [0, 0, 0] }
 
@@ -16,7 +18,6 @@ function versionFromArray(version: VersionArray): Version {
 	return { arr: version, str: version.join('.') }
 }
 
-const SIMPLE_VERSION_REGEX = /^v?(\d+)\.(\d+)\.(\d+).*$/
 export function versionFromString(versionStr: string): Version | undefined {
 	const result = SIMPLE_VERSION_REGEX.exec(versionStr)
 	if (result === null) return undefined
