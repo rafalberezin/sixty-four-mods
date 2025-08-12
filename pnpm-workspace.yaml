@@ -1,0 +1,4 @@
+packages:
+  - packages/modloader
+  - packages/mappings
+  - packages/mods/*

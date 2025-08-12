@@ -1,0 +1,14 @@
+{
+	"name": "modloader",
+	"version": "1.0.0",
+	"exports": {
+		"./types": {
+			"types": "./src/types/modloader.d.ts",
+			"default": "./src/types/modloader.d.ts"
+		}
+	},
+	"devDependencies": {
+		"electron": "^37.2.0",
+		"mappings": "workspace:*"
+	}
+}

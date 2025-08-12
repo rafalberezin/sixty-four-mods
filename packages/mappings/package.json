@@ -1,0 +1,10 @@
+{
+	"name": "mappings",
+	"version": "1.0.0",
+	"exports": {
+		"./types": {
+			"types": "./src/types/game.d.ts",
+			"default": "./src/types/game.d.ts"
+		}
+	}
+}
