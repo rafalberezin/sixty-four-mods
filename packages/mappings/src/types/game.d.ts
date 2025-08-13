@@ -230,6 +230,7 @@ export interface Save {
 		state: boolean
 		timer: number
 		totalTime: number
+		// Original code typo
 		multiplyer: number
 		f: number
 		cooldown: number
@@ -543,6 +544,7 @@ declare global {
 		makeReadable(n: number): string
 		makeReadableFloor(n: number): string
 		addResourcesFromArray(a: ResourceArray, skipAnalytics?: boolean): void
+		// Original code typo
 		substractResourcesFromArray(a: ResourceArray, skipAnalytics?: boolean): void
 		isVisible(p: ArrayPoint): boolean
 		renderConductors(dt: number): void
@@ -671,7 +673,7 @@ declare global {
 		render(dt: number, vposition?: ArrayPoint): void
 		renderColored(dt: number, vposition?: ArrayPoint, c?: Color): void
 		darkrender(dt: number, vposition: ArrayPoint): void
-		// not a mistake
+		// Original code typo
 		rdarkenderColored(dt: number, vposition?: ArrayPoint, c?: Color): void
 
 		initHint(): void
