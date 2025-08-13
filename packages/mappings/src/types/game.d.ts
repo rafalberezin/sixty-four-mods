@@ -187,7 +187,7 @@ export interface ChasmTransferVFXPayload extends VFXPayload {
 	resources: ResourceArray
 	path: ArrayPoint[]
 	f?: OnFinish
-	skipIndex: false | number
+	skipIndex: number | false
 }
 
 export interface LightningVFXPayload extends VFXPayload {
