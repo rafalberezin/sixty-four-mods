@@ -18,8 +18,8 @@ const settings = {
 	},
 	autoMinimize: {
 		type: 'boolean',
-		name: 'Auto Compact',
-		description: 'Minimize the shop automatically when the game starts',
+		name: 'Start Minimized',
+		description: 'Start the game with shop minimized',
 		default: true,
 		sanitize: a => a
 	}
