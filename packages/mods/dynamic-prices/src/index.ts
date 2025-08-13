@@ -6,16 +6,16 @@ declare const __VERSION__: string
 const settings = {
 	priceBaseMultiplier: {
 		type: 'number',
-		name: 'Price Multiplier',
-		description: 'Scale the base build price',
+		name: 'Base Price Multiplier',
+		description: 'Scale the base build price.',
 		default: 1,
 		sanitize: MOD_TOOLBOX.sanitizers.nonNegative
 	},
 	priceExponentMultiplier: {
 		type: 'number',
-		name: 'Price Scaling Multiplier',
+		name: 'Price Increase Rate Multiplier',
 		description:
-			'Scale the build price increase rate.\nSet to 0 for constant prices.',
+			'Scale how fast the build price increases.\nSet to 0 for constant prices.',
 		default: 0.5,
 		sanitize: MOD_TOOLBOX.sanitizers.nonNegative
 	}
@@ -25,7 +25,7 @@ const mod = {
 	id: 'dynamic-prices',
 	name: 'Dynamic Prices',
 	version: __VERSION__,
-	description: 'Modify build prices',
+	description: 'Modify build prices and their increase rate.',
 
 	gameVersion: '1.2.1',
 	loaderVersion: '1.0.0',
