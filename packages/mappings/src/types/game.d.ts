@@ -47,7 +47,7 @@ export interface CodexEntity<T extends Entity> {
 	merge?: boolean
 	affected?: EntityMarkers
 	shouldUnlock?: (m: Game) => boolean
-	isUpgradeTo?: keyof CodexEntities
+	isUpgradeTo?: CodexEntityNames
 	isDark?: boolean
 }
 
@@ -127,7 +127,7 @@ export interface CodexEraserEntity {
 
 export type CodexEntityNames = keyof CodexEntities
 
-export type EntityMarkers = Partial<Record<keyof CodexEntities, boolean>>
+export type EntityMarkers = Partial<Record<CodexEntityNames, boolean>>
 
 export interface CodexAchievement {
 	steamid: string
