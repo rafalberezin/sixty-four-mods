@@ -21,43 +21,44 @@ const settings = {
 	lineColor: {
 		type: 'string',
 		name: 'Grid Line Color',
-		description: 'RBGA hex color for grid lines.',
+		description: 'RGBA hex color for grid lines.',
 		default: '#ddddddff',
 		sanitize: MOD_TOOLBOX.sanitizers.colorHexRGBA
 	},
 	lineWidth: {
 		type: 'number',
 		name: 'Grid Line Width',
-		description: 'Width of grid lines in pixels',
+		description: 'Width of grid lines in pixels.',
 		default: 1,
 		sanitize: MOD_TOOLBOX.sanitizers.nonNegative
 	},
 	alternate: {
 		type: 'boolean',
-		name: 'Alternate Backgrounds',
+		name: 'Alternate Background',
 		description:
-			'When grid lines are show, render every other cell with a different background color.',
+			'When grid lines are shown, render every other cell with a different background color.',
 		default: true,
 		sanitize: a => a
 	},
 	alternateColor: {
 		type: 'string',
 		name: 'Alternate Background Color',
-		description: 'RBGA hex alternate backround color.',
+		description: 'RGBA hex color for alternate backround cells.',
 		default: '#f8f8f8ff',
 		sanitize: MOD_TOOLBOX.sanitizers.colorHexRGBA
 	},
 	tenths: {
 		type: 'boolean',
-		name: 'Alternate Background every 10th',
+		name: 'Alternate Background Every 10th',
 		description:
-			'When grid lines are show, render every other cell with a different background color.',
+			'Render every 10th cell of alternate background with different color.',
 		default: false,
 		sanitize: a => a
 	},
 	tenthColor: {
 		type: 'string',
-		name: 'RBGA hex alternate background color for every 10th cell',
+		name: 'Alternate Background 10th Cell Color',
+		description: 'RGBA hex color for every 10th cell of alternate background.',
 		default: '#ddddddff',
 		sanitize: MOD_TOOLBOX.sanitizers.colorHexRGBA
 	}
@@ -71,7 +72,7 @@ let showGrid = false
 export default {
 	id: 'grid-lines',
 	name: 'Grid Lines',
-	description: 'Toggle visual grid lines by pressing "G"',
+	description: 'Toggle visual grid by pressing "G"',
 
 	version: __VERSION__,
 	gameVersion: '1.2.1',
