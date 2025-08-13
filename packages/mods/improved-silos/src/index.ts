@@ -53,7 +53,7 @@ const settings = {
 const mod = {
 	id: MOD_ID,
 	name: 'Improved Silos',
-	description: 'Modify refil cost and fuel drain rate of the silos.',
+	description: 'Modify refill cost and fuel drain rate of the silos.',
 
 	version: __VERSION__,
 	gameVersion: '1.2.1',
