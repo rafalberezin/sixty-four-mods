@@ -14,13 +14,13 @@ Mod Loader for game
 ## Where to start?
 
 For information on using the mod loader see
-[Using Mod Loader](./01-using-mod-loader).
+[Using Mod Loader](./01-using-mod-loader.md).
 
-For list of **my mods** see [Mods](./02-mods). For **other mods** check out
+For list of **my mods** see [Mods](./02-mods.md). For **other mods** check out
 game's wiki and discord server linked below.
 
 For information on creating mods see
-[Creating Mods](./03-creating-mods/00-introduction).
+[Creating Mods](./03-creating-mods/00-introduction.md).
 
 In case of any issues feel free to ask on the game's discord server linked
 below.
