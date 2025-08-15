@@ -1,0 +1,6 @@
+featured: false
+color: var(--lavender)
+latest_version: null
+versions: null
+tags:
+  Modding: var(--yellow)
