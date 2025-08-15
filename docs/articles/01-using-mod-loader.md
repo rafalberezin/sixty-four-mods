@@ -37,19 +37,19 @@ creates folders, and injects minimal necessary code into the game.
 2. Open the game folder. To do that, **right click** on the game inside your
    Steam library and choose **Browse Local Files**.
 
-   ![steam browse files](../assets/steam-browse-files.png)
+   ![steam browse files](../assets/steam/browse-files.png)
 
 3. Place the downloaded installer inside the game folder, next to
    `win-unpacked`.
 
-   ![folders before installation](../assets/folders-before-installation.png)
+   ![folders before installation](../assets/folders/before-installation.png)
 
 4. Run the installer. The installer will inpack the mod loader files, inject
    necessary code into the game, and create the mods folder. If any issues occur
    you will be informed by the installer. After successful installation you
    should have:
 
-   ![folders after installation](../assets/folders-after-installation.png)
+   ![folders after installation](../assets/folders/after-installation.png)
 
 ### Manual Installation
 
@@ -65,7 +65,7 @@ creates folders, and injects minimal necessary code into the game.
 2. Open the game folder. To do that, **right click** on the game inside your
    Steam library and choose **Browse Local Files**.
 
-   ![steam browse files](../assets/steam-browse-files.png)
+   ![steam browse files](../assets/steam/browse-files.png)
 
 3. Next to `win-unpacked`, create 2 folders `modloader` and `mods`.
 4. Put the downloaded `modloader.js` into the `modloader` folder
@@ -81,14 +81,14 @@ creates folders, and injects minimal necessary code into the game.
 
 The full folder structure should look like this:
 
-![folders reference for manual installation](../assets/folders-manual-installation.png)
+![folders reference for manual installation](../assets/folders/manual-installation.png)
 
 ## Installing Mods
 
 When you have the modloader installed, you simply put the mod files (`.js`) you
 downloaded into the `mods` folder.
 
-![folders with mods](../assets/folders-mods.png)
+![folders with mods](../assets/folders/mods.png)
 
 You can find my mods [here](./02-mods)
 
@@ -104,12 +104,12 @@ that:
 1. **Right click** on the game inside Steam library, and open it's
    **Properties**.
 
-   ![steam open properties](../assets/steam-open-properties.png)
+   ![steam open properties](../assets/steam/open-properties.png)
 
 2. Navigate to the **Installed Files** tab and click on **Verify integrity of
    game files**.
 
-   ![steam open properties](../assets/steam-verify-files.png)
+   ![steam open properties](../assets/steam/verify-files.png)
 
 After that's done you can [Install the Mod Loader](#installing-mod-loader).
 
