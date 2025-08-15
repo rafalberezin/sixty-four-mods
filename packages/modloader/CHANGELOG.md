@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/rafalberezin/sixty-four-mods/compare/modloader-v1.1.0...modloader-v1.1.1) (2025-08-15)
+
+
+### Bug Fixes
+
+* add missing loader version label ([989dde5](https://github.com/rafalberezin/sixty-four-mods/commit/989dde58213f3356dab0e0d2dd127ee46d1d2002))
+* **build:** repair installer name injection ([44cd988](https://github.com/rafalberezin/sixty-four-mods/commit/44cd988cdc7686b8633d0e6ddbe834c224b421f0))
+
 ## [1.1.0](https://github.com/rafalberezin/sixty-four-mods/compare/modloader-v1.0.0...modloader-v1.1.0) (2025-08-12)
 
 
