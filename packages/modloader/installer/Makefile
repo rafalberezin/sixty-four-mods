@@ -3,7 +3,7 @@ MODLOADER_RELATIVE := ../$(MODLOADER_OUT)
 EMBED_DIR := embed/
 EMBED := $(EMBED_DIR)modloader.js
 
-LDFLAGS := -ldflags="-s -w -X main.name=$(notdir $(1)) -X main.version=$(VERSION)"
+LDFLAGS = -ldflags="-s -w -X main.name=$(notdir $(1)) -X main.version=$(VERSION)"
 
 OUT_WINDOWS := ../dist/modloader-installer-windows.exe
 OUT_LINUX := ../dist/modloader-installer-linux
