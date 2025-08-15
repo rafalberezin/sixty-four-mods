@@ -1,0 +1,29 @@
+name: Upload Docs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload-docs:
+    name: Upload Docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Upload Docs
+        id: upload-docs
+        uses: rafalberezin/supabase-upload-docs-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          supabase-url: ${{ secrets.SUPABASE_URL }}
+          supabase-key: ${{ secrets.SUPABASE_KEY }}
+          articles-path: docs/articles
+          assets-path: docs/assets
+          meta-path: docs/meta.yaml
+          storage-bucket: projects
+          storage-articles-dir: articles
+          storage-assets-dir: assets
+          meta-table: projects
