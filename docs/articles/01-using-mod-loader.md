@@ -7,8 +7,8 @@ If you used old mods **before this mod loader** you should
 
 The modloader can be installed either:
 
-- [**Using the installer**](#automatic-installer): available for **Windows** and
-  **Linux**
+- [**Using the installer**](#automatic-installer) - Available for **Windows**
+  and **Linux**.
 - [**Manually**](#manual-installation)
 
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ creates folders, and injects minimal necessary code into the game.
 
    ![folders before installation](../assets/folders/before-installation.png)
 
-4. Run the installer. The installer will inpack the mod loader files, inject
+4. Run the installer. The installer will unpack the mod loader files, inject
    necessary code into the game, and create the mods folder. If any issues occur
    you will be informed by the installer. After successful installation you
    should have:

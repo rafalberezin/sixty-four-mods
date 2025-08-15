@@ -2,14 +2,14 @@
 
 ## Quick Mod List
 
-- [**Compact Shop**](#compact-shop): Make the minimized shop even more compact.
+- [**Compact Shop**](#compact-shop) - Make the minimized shop even more compact.
   [(Download)](https://github.com/rafalberezin/sixty-four-mods/releases/download/compact-shop-latest/compact-shop.js)
-- [**Dynamic Prices**](#dynamic-prices): Modify build prices and their increase
+- [**Dynamic Prices**](#dynamic-prices) - Modify build prices and their increase
   rate.
   [(Download)](https://github.com/rafalberezin/sixty-four-mods/releases/download/dynamic-prices-latest/dynamic-prices.js)
-- [**Grid Lines**](#grid-lines): Display grid in the background.
+- [**Grid Lines**](#grid-lines) - Display grid in the background.
   [(Download)](https://github.com/rafalberezin/sixty-four-mods/releases/download/grid-lines-latest/grid-lines.js)
-- [**Improved Silos**](#improved-silos): Modify refill cost and fuel drain rate
+- [**Improved Silos**](#improved-silos) - Modify refill cost and fuel drain rate
   of the silos.
   [(Download)](https://github.com/rafalberezin/sixty-four-mods/releases/download/improved-silos-latest/improved-silos.js)
 
@@ -24,7 +24,7 @@ You can look for more mods on
 
 Make the minimized shop even more compact.
 
-Credits: [YPetremann](https://github.com/YPetremann) - original version of this
+Credits: [YPetremann](https://github.com/YPetremann) - Original version of this
 mod.
 
 #### Configuration
@@ -67,7 +67,7 @@ Allows you to modify the base price and their increase rate for the machines.
 
 Display grid in the background. Press `G` to toggle the grid.
 
-Credits: [NamelessCoder](https://github.com/NamelessCoder) - original version of
+Credits: [NamelessCoder](https://github.com/NamelessCoder) - Original version of
 this mod.
 
 #### Configuration
@@ -115,7 +115,7 @@ this mod.
 
 Modify refill cost and fuel drain rate of the silos.
 
-Credits: [NamelessCoder](https://github.com/NamelessCoder) - original version of
+Credits: [NamelessCoder](https://github.com/NamelessCoder) - Original version of
 this mod.
 
 #### Configuration
