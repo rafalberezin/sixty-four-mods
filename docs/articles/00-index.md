@@ -46,6 +46,7 @@ below.
 - [Dynamic Prices](https://github.com/rafalberezin/sixty-four-mods/releases/download/dynamic-prices-latest/dynamic-prices.js)
 - [Grid Lines](https://github.com/rafalberezin/sixty-four-mods/releases/download/grid-lines-latest/grid-lines.js)
 - [Improved Silos](https://github.com/rafalberezin/sixty-four-mods/releases/download/improved-silos-latest/improved-silos.js)
+- [Pause](https://github.com/rafalberezin/sixty-four-mods/releases/download/pause-latest/pause.js)
 
 ### Modding resources
 

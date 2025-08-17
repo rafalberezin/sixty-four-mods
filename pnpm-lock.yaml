@@ -77,6 +77,12 @@ importers:
         specifier: workspace:*
         version: link:../../modloader
 
+  packages/mods/pause:
+    devDependencies:
+      modloader:
+        specifier: workspace:*
+        version: link:../../modloader
+
 packages:
 
   '@electron/get@2.0.3':

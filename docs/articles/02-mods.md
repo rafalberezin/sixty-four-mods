@@ -12,6 +12,9 @@
 - [**Improved Silos**](#improved-silos) - Modify refill cost and fuel drain rate
   of the silos.
   [(Download)](https://github.com/rafalberezin/sixty-four-mods/releases/download/improved-silos-latest/improved-silos.js)
+- [**Pause**](#pause) - Pause the game, while still being able to interact with
+  it.
+  [(Download)](https://github.com/rafalberezin/sixty-four-mods/releases/download/pause-latest/pause.js)
 
 You can look for more mods on
 [game's wiki modding page](https://sixtyfour.game-vault.net/wiki/Modding:Index)
@@ -143,3 +146,21 @@ this mod.
   How much refilling the **Industrial Silo** costs.
 
   Default: `1`
+
+### Pause
+
+[**Download**](https://github.com/rafalberezin/sixty-four-mods/releases/download/pause-latest/pause.js)
+
+Press `p` to pause/resume the game. You are still able to interact with the game
+while it's paused.
+
+Credits: [NamelessCoder](https://github.com/NamelessCoder) - Original version of
+this mod.
+
+#### Configuration
+
+- **Mute Paused**
+
+  Mute the game when paused.
+
+  Default: `OFF`

@@ -6,6 +6,7 @@
 		"packages/mods/compact-shop": {},
 		"packages/mods/dynamic-prices": {},
 		"packages/mods/grid-lines": {},
-		"packages/mods/improved-silos": {}
+		"packages/mods/improved-silos": {},
+		"packages/mods/pause": {}
 	}
 }
