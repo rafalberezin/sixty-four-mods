@@ -19,11 +19,11 @@ containing the patches for methods of that class.
 > corresponding class declarations in
 > [game mappings](./01-what-are-mods.md#types)
 
-The method patches are grouped by type, with the groups containing
+The method patches are grouped by patch type, each with specific applications.
 
 ## Patch Types
 
-There are currently 3 types of patches available, each with different
+There are currently 3 types of patches available:
 
 - `replace` - Replace the specified method entirerly.
 
