@@ -145,6 +145,55 @@ export interface CodexMessageEvent {
 	chain: number[]
 }
 
+type WordsLanguage =
+	| 'en'
+	| 'ru'
+	| 'de'
+	| 'nl'
+	| 'fr'
+	| 'ptbr'
+	| 'it'
+	| 'es'
+	| 'cz'
+	| 'pl'
+	| 'jp'
+	| 'kr'
+	| 'sch'
+	| 'tch'
+	| 'thai'
+	| 'hu'
+	| 'lv'
+	| 'ro'
+	| 'no'
+
+export type Words = Record<WordsLanguage, WordsData>
+
+interface WordsData {
+	splash: Record<string, string>
+	achievements: WordsAchievement[]
+	resources: string[]
+	entities: Record<CodexEntityNames, WordsEntity>
+	messages: string[]
+	credits: string[]
+	explainer: string[]
+	random: Record<string, string>
+}
+
+interface WordsAchievement {
+	name: string
+	description: string
+}
+
+interface WordsAchievement {
+	name: string
+	description: string
+}
+
+interface WordsEntity {
+	name: string
+	description: string
+}
+
 export interface VFXPayload {
 	visibility?: number[]
 }
@@ -377,6 +426,8 @@ declare global {
 	}
 
 	function abstract_getCodex(): Codex
+
+	function abstract_getWords(): Words
 
 	class VFX<T extends VFXPayload = VFXPayload> {
 		constructor(master: Game, payload?: T)
@@ -1077,5 +1128,6 @@ export interface PatchableClassMap {
 // globally expose exported types needed by `modloader.d.ts` of the modloader package
 declare global {
 	type __Codex__ = Codex
+	type __Words__ = Words
 	type __PatchableClassMap__ = PatchableClassMap
 }
