@@ -5,7 +5,7 @@ define the modding API, and describe what is available to be modified in the
 game.
 
 In this guide we'll expand on the example from the
-[Patching Methods](./06-patching-methods.md) section, to use TypeScript.
+[Patching Methods](./07-patching-methods.md) section, to use TypeScript.
 
 > [!NOTE]
 >

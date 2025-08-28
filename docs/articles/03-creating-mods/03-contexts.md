@@ -11,6 +11,7 @@ Received by mod methods:
 
 - `getPatches`
 - `updateCodex`
+- `updateWords`
 - `getStyles`
 - `onLoad`
 
@@ -52,4 +53,5 @@ Contains:
 
 - [Settings](./04-settings.md)
 - [Updating Codex](./05-updating-codex.md)
-- [Patching Methods](./06-patching-methods.md)
+- [Updating Words](./06-updating-words.md)
+- [Patching Methods](./07-patching-methods.md)

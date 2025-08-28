@@ -199,4 +199,4 @@ module.exports = {
 
 ## Next
 
-- [Using Typescript](./07-using-typescript.md)
+- [Using Typescript](./08-using-typescript.md)

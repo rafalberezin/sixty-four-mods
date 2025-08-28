@@ -168,4 +168,5 @@ Next, we'll dive deeper into:
 - [Contexts](./03-contexts.md)
 - [Settings](./04-settings.md)
 - [Updating Codex](./05-updating-codex.md)
-- [Patching Methods](./06-patching-methods.md)
+- [Updating Words](./06-updating-words.md)
+- [Patching Methods](./07-patching-methods.md)

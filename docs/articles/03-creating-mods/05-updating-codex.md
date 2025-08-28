@@ -50,4 +50,5 @@ module.exports = {
 
 ## Next
 
-- [Patching Methods](./06-patching-methods.md)
+- [Updating Words](./06-updating-words.md)
+- [Patching Methods](./07-patching-methods.md)
