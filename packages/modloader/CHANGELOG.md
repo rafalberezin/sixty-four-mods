@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/rafalberezin/sixty-four-mods/compare/modloader-v1.1.1...modloader-v1.2.0) (2025-08-28)
+
+
+### Features
+
+* add words updates to mods ([0b545ab](https://github.com/rafalberezin/sixty-four-mods/commit/0b545ab44e76e29331202a8c6a919637490037bd))
+
+
+### Bug Fixes
+
+* ensure cross class patch chains are connected ([c4e6cd0](https://github.com/rafalberezin/sixty-four-mods/commit/c4e6cd0702c436325420096223ea8abe5a3938ed))
+
 ## [1.1.1](https://github.com/rafalberezin/sixty-four-mods/compare/modloader-v1.1.0...modloader-v1.1.1) (2025-08-15)
 
 
