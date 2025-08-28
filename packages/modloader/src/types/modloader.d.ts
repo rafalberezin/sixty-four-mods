@@ -35,6 +35,7 @@ export interface Mod<S extends ModSettingsDefinition = ModSettingsDefinition> {
 
 	getPatches?: (mctx: ModContext<S>) => PatchSpec
 	updateCodex?: (mctx: ModContext<S>, codex: __Codex__) => void
+	updateWords?: (mctx: ModContext<S>, words: __Words__) => void
 	getStyles?: (mctx: ModContext<S>) => string
 	onLoad?: (mctx: ModContext<S>) => void
 }

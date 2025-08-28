@@ -148,6 +148,7 @@ const MOD_SCHEMA: Schema = {
 		),
 		getPatches: { type: 'function' },
 		updateCodex: { type: 'function' },
+		updateWords: { type: 'function' },
 		getStyles: { type: 'function' },
 		onLoad: { type: 'function' },
 		settings: {

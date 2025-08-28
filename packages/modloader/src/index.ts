@@ -12,6 +12,7 @@ import {
 	saveSettings,
 	synchronizeSettingsWithMods
 } from './core/settings'
+import { updateWords } from './core/words'
 import {
 	addLoaderError,
 	finishLoader,
@@ -109,6 +110,7 @@ async function main() {
 	applyPatches(patches, patchableClassMap)
 
 	updateCodex(enabledMods)
+	updateWords(enabledMods)
 	loadStyles(enabledMods)
 	onLoadMods(enabledMods)
 
