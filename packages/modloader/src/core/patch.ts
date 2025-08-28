@@ -1,5 +1,4 @@
 import { addLoaderError, setLoaderStatus } from '../ui/loader'
-import { log } from '../utils/tools'
 import { validate } from '../utils/validate'
 
 import type { LoadedMod } from './mod'
@@ -86,10 +85,7 @@ export function collectPatches(mods: LoadedMod[]): PatchCollection {
 		}
 
 		const errors = validate(PATCH_SPEC_SCHEMA, mod.patches)
-		if (errors.length > 0) {
-			log(errors)
-			continue
-		}
+		if (errors.length > 0) continue
 
 		addModPatches(collection, mod.definition.name, mod.patches)
 	}
@@ -110,7 +106,7 @@ export function addModPatches(
 		const classPatch = patches[className]
 		if (classPatch === undefined) continue
 
-		const classPatchCollection = (collection[className] ??= { methods: {} })
+		const methods = (collection[className] ??= { methods: {} }).methods!
 
 		for (const groupName of METHOD_PATCH_GROUPS) {
 			const patchGroup = classPatch[groupName]
@@ -118,9 +114,7 @@ export function addModPatches(
 
 			for (const methodName of Object.keys(patchGroup)) {
 				// @ts-expect-error: keys of patchGroup directly translate to keys of the 'methods' field of the collection for the same class
-				const methodPatchCollection = (classPatchCollection.methods[
-					methodName
-				] ??= {
+				const methodPatchCollection = (methods[methodName] ??= {
 					replace: [],
 					wrap: [],
 					observe: []
@@ -166,54 +160,89 @@ export function applyPatches(
 	patchableClassMap: InternalPatchableClassMap
 ) {
 	setLoaderStatus('Applying mod patches')
+	const patchedClasses = new Set<string>()
 
 	for (const className in patches) {
-		const classPatch = patches[className]
-		if (classPatch === undefined) continue
+		applyClassPatches(patches, className, patchableClassMap, patchedClasses)
+	}
+}
 
-		const patchableClass = patchableClassMap[className]
-		const shouldBePresent = className in patchableClassMap
-		const isPresent = patchableClass !== undefined
+function applyClassPatches(
+	patches: PatchCollection,
+	className: string,
+	patchableClassMap: InternalPatchableClassMap,
+	patchedClasses: Set<string>
+): void {
+	if (patchedClasses.has(className)) return
+	patchedClasses.add(className)
 
-		if (!shouldBePresent || !isPresent) {
-			const modNamesSet = new Set<string>()
-			Object.values(classPatch.methods).forEach(method => {
-				if (method !== undefined) {
-					Object.values(method).forEach(group =>
-						group.forEach(entry => modNamesSet.add(entry.mod))
-					)
-				}
-			})
-			const modNames = Array.from(modNamesSet)
+	const classPatch = patches[className]
+	if (classPatch === undefined) return
 
-			const summary = shouldBePresent
-				? `An expected class "${className}" patched by mods is missing at runtime.`
-				: `Mods tried to patch an invalid class "${className}".`
+	const patchableClass = patchableClassMap[className]
+	const shouldBePresent = className in patchableClassMap
+	const isPresent = patchableClass !== undefined
 
-			addLoaderError({
-				source: 'external',
-				severity: 'error',
-				summary,
-				details: modNames
-			})
+	if (!shouldBePresent || !isPresent) {
+		const modNamesSet = new Set<string>()
+		Object.values(classPatch.methods).forEach(method => {
+			if (method !== undefined) {
+				Object.values(method).forEach(group =>
+					group.forEach(entry => modNamesSet.add(entry.mod))
+				)
+			}
+		})
+		const modNames = Array.from(modNamesSet)
 
-			continue
-		}
+		const summary = shouldBePresent
+			? `An expected class "${className}" patched by mods is missing at runtime.`
+			: `Mods tried to patch an invalid class "${className}".`
 
-		for (const methodName in classPatch.methods) {
-			const methodPatch = classPatch.methods[methodName]
-			if (methodPatch === undefined) continue
+		addLoaderError({
+			source: 'external',
+			severity: 'error',
+			summary,
+			details: modNames
+		})
 
-			const handler = composeMethodPatches(
-				methodPatch,
-				`${className}.${methodName}`
-			)
+		return
+	}
 
-			patchableClass.prototype[methodName] = new Proxy(
-				patchableClass.prototype[methodName],
-				handler
-			)
-		}
+	const parent = Object.getPrototypeOf(patchableClass) as
+		| Constructor
+		| undefined
+
+	if (
+		typeof parent === 'function' &&
+		parent.prototype !== undefined &&
+		parent !== Object &&
+		parent !== Function
+	) {
+		applyClassPatches(patches, parent.name, patchableClassMap, patchedClasses)
+	}
+
+	applyMethodPatches(patchableClass, className, classPatch)
+}
+
+function applyMethodPatches(
+	patchableClass: Constructor,
+	className: string,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	classPatch: ClassPatchCollection<any>
+): void {
+	for (const methodName in classPatch.methods) {
+		const methodPatch = classPatch.methods[methodName]
+		if (methodPatch === undefined) continue
+
+		const handler = composeMethodPatches(
+			methodPatch,
+			`${className}.${methodName}`
+		)
+
+		patchableClass.prototype[methodName] = new Proxy(
+			patchableClass.prototype[methodName],
+			handler
+		)
 	}
 }
 
@@ -268,7 +297,7 @@ function composeMethodPatches<T, M extends Method>(
 						final
 					)
 
-	const runComposite = wraps.length > 0 || replace
+	const runComposite = wraps.length > 0 || replace !== undefined
 	const runObservers = observers.length > 0
 
 	return {
