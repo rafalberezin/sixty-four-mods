@@ -3,3 +3,4 @@ pnpm-lock.yaml
 .pnpm-store/
 .release-please-manifest.json
 **/CHANGELOG.md
+packages/modloader/installer/embed/
