@@ -60,7 +60,7 @@ creates folders, and injects minimal necessary code into the game.
 > [HERE](https://sixtyfour.game-vault.net/wiki/Modding:Index#MacOS_Modding).
 
 1. Download the
-   [modloader.js](https://github.com/rafalberezin/sixty-four-mods/tree/master/dist/modloader/modloader.js)
+   [modloader.js](https://github.com/rafalberezin/sixty-four-mods/releases/download/modloader-latest/modloader.js)
 
 2. Open the game folder. To do that, **right click** on the game inside your
    Steam library and choose **Browse Local Files**.
